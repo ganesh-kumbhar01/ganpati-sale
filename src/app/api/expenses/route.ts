@@ -7,8 +7,8 @@ const expenseSchema = z.object({
   seasonId: z.string().min(1),
   category: z.string().min(1),
   amount: z.number().min(0),
-  description: z.string().optional(),
-  receiptUrl: z.string().optional(),
+  description: z.string().nullable().optional(),
+  receiptUrl: z.string().nullable().optional(),
 });
 
 export async function GET(req: Request) {
