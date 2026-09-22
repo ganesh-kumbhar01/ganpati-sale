@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Plus, Package, Loader2, Trash2 } from 'lucide-react';
+import { Plus, Package, Loader2, Trash2, Camera, ImageIcon } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
@@ -280,9 +280,28 @@ export default function ProductsClient({ initialProducts, seasons }: { initialPr
                         <h4 className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3">Product Photo</h4>
                       </div>
                       <div className="sm:col-span-2">
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Upload Ganpati Photo</label>
-                        <input type="file" accept="image/*" onChange={handleImageChange} className="mt-1 block w-full rounded-lg border border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2" />
-                        <p className="mt-1 text-xs text-slate-500">This photo will be used to easily identify the model during booking.</p>
+                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Ganpati Photo</label>
+                        <div className="flex gap-2 mt-1">
+                          <label className="flex-1 cursor-pointer flex flex-col items-center justify-center gap-1 py-3 px-2 border-2 border-dashed border-indigo-200 dark:border-indigo-800/50 rounded-xl bg-indigo-50/50 dark:bg-indigo-900/10 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition-colors">
+                            <Camera className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                            <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400">Take Photo</span>
+                            <input type="file" accept="image/*" capture="environment" onChange={handleImageChange} className="hidden" />
+                          </label>
+                          <label className="flex-1 cursor-pointer flex flex-col items-center justify-center gap-1 py-3 px-2 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50/50 dark:bg-slate-800/30 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            <ImageIcon className="w-5 h-5 text-slate-600 dark:text-slate-400" />
+                            <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">From Gallery</span>
+                            <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
+                          </label>
+                        </div>
+                        {imageFile && (
+                          <div className="mt-2 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg flex items-center justify-between border border-indigo-100 dark:border-indigo-800/30">
+                            <span className="text-xs font-medium text-indigo-600 dark:text-indigo-400 truncate max-w-[200px]">{imageFile.name}</span>
+                            <button type="button" onClick={() => setImageFile(null)} className="text-rose-500 hover:text-rose-600 bg-rose-50 dark:bg-rose-900/30 p-1 rounded-md">
+                              <Trash2 className="w-3 h-3" />
+                            </button>
+                          </div>
+                        )}
+                        <p className="mt-2 text-[10px] text-slate-500">This photo will be used to easily identify the model during booking.</p>
                       </div>
                     </div>
                   </div>
