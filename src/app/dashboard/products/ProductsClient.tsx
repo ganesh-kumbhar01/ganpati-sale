@@ -229,7 +229,7 @@ export default function ProductsClient({ initialProducts, seasons }: { initialPr
           <div className="fixed inset-0 bg-slate-900/75 backdrop-blur-sm transition-opacity" onClick={() => setIsModalOpen(false)}></div>
           <div className="fixed inset-0 z-10 overflow-y-auto">
             <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <div className="relative transform overflow-hidden rounded-2xl bg-white dark:bg-slate-800 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-xl border border-slate-200 dark:border-slate-700">
+              <div className="relative transform overflow-hidden rounded-2xl bg-white dark:bg-slate-800 text-left shadow-xl transition-all w-full max-w-full sm:my-8 sm:w-full sm:max-w-xl border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto">
                 <form onSubmit={handleSubmit}>
                   <div className="px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                     <div className="flex justify-between items-center mb-4">

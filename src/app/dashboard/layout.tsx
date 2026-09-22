@@ -65,9 +65,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Main Content */}
       <div className="flex flex-1 flex-col overflow-hidden">
         {/* Persistent Top Header */}
-        <header className="sticky top-0 z-10 flex h-16 flex-shrink-0 items-center justify-between gap-x-4 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-x-4 md:hidden">
-            <div className="font-bold text-indigo-600 dark:text-indigo-400">Ganpati Reseller</div>
+        <header className="sticky top-0 z-10 flex h-16 flex-shrink-0 items-center justify-between gap-x-2 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur px-3 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-x-2 md:hidden">
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white flex items-center justify-center overflow-hidden border border-slate-200 shadow-sm">
+              <img src="/bappa-logo.jpg" alt="Vighnharta" className="w-full h-full object-cover" />
+            </div>
+            <div className="font-bold text-indigo-600 dark:text-indigo-400 hidden sm:block">Ganpati Reseller</div>
           </div>
           
           <div className="flex flex-1 items-center justify-end md:justify-between w-full">
@@ -75,8 +78,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <GlobalSearch />
             </div>
             
-            <div className="flex items-center gap-x-4 ml-auto">
-              <div className="md:hidden w-48 sm:w-64">
+            <div className="flex items-center gap-x-2 sm:gap-x-4 ml-auto">
+              <div className="md:hidden w-32 sm:w-64">
                 <GlobalSearch />
               </div>
               <ThemeToggle />
@@ -85,9 +88,38 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
         </header>
         
-        <main className="flex-1 p-6 lg:p-8">
+        <main className="flex-1 p-4 pb-24 md:p-6 lg:p-8 md:pb-6 overflow-y-auto">
           {children}
         </main>
+      </div>
+
+      {/* Premium Bottom Navigation for Mobile */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 shadow-[0_-10px_40px_-10px_rgba(0,0,0,0.1)]">
+        <nav 
+          className="flex overflow-x-auto snap-x snap-mandatory items-center py-2 px-2 gap-1"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {/* Hide webkit scrollbar hack via inline style or globals, but since we can't reliably inject CSS here, we rely on scrollbarWidth */}
+          <style dangerouslySetInnerHTML={{__html: `nav::-webkit-scrollbar { display: none; }`}} />
+          
+          {navigation.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`snap-start shrink-0 flex flex-col items-center justify-center min-w-[76px] px-1 py-1.5 rounded-2xl transition-all duration-300 ${
+                  isActive
+                    ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 shadow-sm'
+                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800'
+                }`}
+              >
+                <item.icon className={`h-5 w-5 mb-1 transition-transform duration-300 ${isActive ? 'scale-110 drop-shadow-sm' : ''}`} />
+                <span className="text-[10px] font-bold tracking-wide whitespace-nowrap">{item.name}</span>
+              </Link>
+            );
+          })}
+        </nav>
       </div>
     </div>
   );

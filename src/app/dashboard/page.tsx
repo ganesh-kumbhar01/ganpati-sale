@@ -159,7 +159,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 lg:grid-cols-5">
         
         <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800">
           <p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Total Revenue</p>
@@ -202,24 +202,39 @@ export default async function DashboardPage() {
             </Link>
           </div>
           
-          <div className="grid grid-cols-4 gap-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-4 px-2">
+          <div className="hidden sm:grid grid-cols-4 gap-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-4 px-2">
             <div className="col-span-2">Customer & Product</div>
             <div>Status</div>
             <div className="text-right">Date</div>
           </div>
 
-          <ul className="space-y-1">
+          <ul className="space-y-2">
             {recentBookings.length === 0 ? (
-              <li className="p-4 text-center text-sm text-slate-500">No bookings yet.</li>
+              <li className="p-4 text-center text-sm text-slate-500 bg-slate-50 dark:bg-slate-900 rounded-lg">No bookings yet.</li>
             ) : (
               recentBookings.map((b) => (
-                <li key={b.id} className="p-2 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors">
-                  <div className="grid grid-cols-4 gap-4 items-center">
-                    <div className="col-span-2 truncate">
-                      <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{b.customer.name}</p>
-                      <p className="text-[11px] text-slate-500 truncate">{b.product.name} (Qty: {b.quantity})</p>
+                <li key={b.id} className="p-3 sm:p-2 bg-slate-50 sm:bg-transparent dark:bg-slate-700/30 sm:dark:bg-transparent hover:bg-slate-100 dark:hover:bg-slate-700/50 rounded-xl sm:rounded-lg transition-colors border border-slate-100 sm:border-transparent dark:border-slate-700/50">
+                  <div className="flex flex-col sm:grid sm:grid-cols-4 gap-2 sm:gap-4 sm:items-center">
+                    <div className="col-span-2 flex justify-between sm:block">
+                      <div className="truncate">
+                        <p className="text-sm sm:text-xs font-bold text-slate-900 dark:text-white truncate">{b.customer.name}</p>
+                        <p className="text-xs sm:text-[11px] text-slate-500 truncate">{b.product.name} (Qty: {b.quantity})</p>
+                      </div>
+                      {/* Mobile Only Status & Date */}
+                      <div className="flex flex-col items-end sm:hidden">
+                        <span className={`inline-flex items-center rounded-md px-2 py-0.5 text-[10px] font-bold ring-1 ring-inset ${
+                          b.status === 'COMPLETED' ? 'bg-emerald-50 text-emerald-700 ring-emerald-600/20' : 
+                          b.status === 'CANCELLED' ? 'bg-rose-50 text-rose-700 ring-rose-600/20' : 
+                          'bg-amber-50 text-amber-700 ring-amber-600/20'
+                        }`}>
+                          {b.status}
+                        </span>
+                        <p className="text-[10px] font-medium text-slate-400 mt-1">
+                          {new Date(b.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                        </p>
+                      </div>
                     </div>
-                    <div>
+                    <div className="hidden sm:block">
                       <span className={`inline-flex items-center rounded-md px-2 py-1 text-[10px] font-bold ring-1 ring-inset ${
                         b.status === 'COMPLETED' ? 'bg-emerald-50 text-emerald-700 ring-emerald-600/20' : 
                         b.status === 'CANCELLED' ? 'bg-rose-50 text-rose-700 ring-rose-600/20' : 
@@ -228,7 +243,7 @@ export default async function DashboardPage() {
                         {b.status}
                       </span>
                     </div>
-                    <div className="text-right">
+                    <div className="hidden sm:block text-right">
                       <p className="text-[11px] font-medium text-slate-500">
                         {new Date(b.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                       </p>
@@ -246,29 +261,40 @@ export default async function DashboardPage() {
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">Pending Actions (Pickups)</h3>
           </div>
 
-          <div className="grid grid-cols-4 gap-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-4 px-2">
+          <div className="hidden sm:grid grid-cols-4 gap-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-4 px-2">
             <div className="col-span-2">Customer</div>
             <div className="text-center">Action</div>
             <div className="text-right">Pending</div>
           </div>
 
-          <ul className="space-y-1">
+          <ul className="space-y-2">
             {pendingPickups.length === 0 ? (
-              <li className="p-4 text-center text-sm text-slate-500">No pending pickups.</li>
+              <li className="p-4 text-center text-sm text-slate-500 bg-slate-50 dark:bg-slate-900 rounded-lg">No pending pickups.</li>
             ) : (
               pendingPickups.map((b) => (
-                <li key={b.id} className="p-2 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors">
-                  <div className="grid grid-cols-4 gap-4 items-center">
-                    <div className="col-span-2 truncate">
-                      <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{b.customer.name}</p>
-                      <p className="text-[11px] text-slate-500 truncate">{b.customer.mobile}</p>
+                <li key={b.id} className="p-3 sm:p-2 bg-slate-50 sm:bg-transparent dark:bg-slate-700/30 sm:dark:bg-transparent hover:bg-slate-100 dark:hover:bg-slate-700/50 rounded-xl sm:rounded-lg transition-colors border border-slate-100 sm:border-transparent dark:border-slate-700/50">
+                  <div className="flex flex-col sm:grid sm:grid-cols-4 gap-2 sm:gap-4 sm:items-center">
+                    <div className="col-span-2 flex justify-between sm:block">
+                      <div className="truncate">
+                        <p className="text-sm sm:text-xs font-bold text-slate-900 dark:text-white truncate">{b.customer.name}</p>
+                        <p className="text-xs sm:text-[11px] text-slate-500 truncate">{b.customer.mobile}</p>
+                      </div>
+                      {/* Mobile Only Action & Pending */}
+                      <div className="flex flex-col items-end sm:hidden">
+                        <span className="text-sm font-extrabold text-[#FF4C4C] mb-1">
+                          ₹{b.balanceAmount}
+                        </span>
+                        <Link href="/dashboard/pickup" className="inline-flex items-center justify-center rounded-md bg-indigo-50 px-3 py-1 text-[11px] font-bold text-indigo-700 ring-1 ring-inset ring-indigo-600/20">
+                          Deliver
+                        </Link>
+                      </div>
                     </div>
-                    <div className="text-center">
+                    <div className="hidden sm:block text-center">
                       <Link href="/dashboard/pickup" className="text-[11px] font-bold text-[#5340FF] hover:underline">
                         Deliver
                       </Link>
                     </div>
-                    <div className="text-right">
+                    <div className="hidden sm:block text-right">
                       <span className="text-[11px] font-bold text-[#FF4C4C]">
                         ₹{b.balanceAmount}
                       </span>
