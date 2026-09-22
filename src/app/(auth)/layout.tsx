@@ -1,5 +1,4 @@
 import React from 'react';
-import { Toaster } from 'react-hot-toast';
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -25,8 +24,6 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           {children}
         </div>
       </div>
-      
-      <Toaster position="top-center" />
     </div>
   );
 }
