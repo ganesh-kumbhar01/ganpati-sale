@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Plus, Package, Loader2, Trash2, Camera, ImageIcon } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import imageCompression from 'browser-image-compression';
 
 export default function ProductsClient({ initialProducts, seasons }: { initialProducts: any[], seasons: any[] }) {
   const router = useRouter();
@@ -66,15 +67,29 @@ export default function ProductsClient({ initialProducts, seasons }: { initialPr
     try {
       let imageUrl = null;
       if (imageFile) {
+        toast.loading('Compressing and uploading image...', { id: 'upload-toast' });
+        
+        // Compress image before upload to avoid Vercel's 4.5MB limit
+        const options = {
+          maxSizeMB: 1,
+          maxWidthOrHeight: 1024,
+          useWebWorker: true
+        };
+        const compressedFile = await imageCompression(imageFile, options);
+        
         const formDataImg = new FormData();
-        formDataImg.append('file', imageFile);
+        formDataImg.append('file', compressedFile);
         const uploadRes = await fetch('/api/upload', {
           method: 'POST',
           body: formDataImg,
         });
         const uploadData = await uploadRes.json();
-        if (!uploadRes.ok) throw new Error('Image upload failed');
+        if (!uploadRes.ok) {
+          toast.dismiss('upload-toast');
+          throw new Error(uploadData.error || 'Image upload failed on server');
+        }
         imageUrl = uploadData.url;
+        toast.dismiss('upload-toast');
       }
 
       const payload: any = {
