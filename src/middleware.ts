@@ -6,6 +6,10 @@ export function middleware(request: NextRequest) {
   const isAuthRoute = request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/register');
   const isProtectedRoute = request.nextUrl.pathname.startsWith('/dashboard') || request.nextUrl.pathname.startsWith('/api/business');
 
+  if (request.nextUrl.pathname.startsWith('/register')) {
+    return NextResponse.redirect(new URL('/login?mode=register', request.url));
+  }
+
   if (isProtectedRoute && !session) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
