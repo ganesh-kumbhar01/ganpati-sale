@@ -172,8 +172,8 @@ export default async function DashboardPage() {
         </div>
 
         <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800">
-          <p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Other Expenses</p>
-          <p className="text-3xl font-extrabold text-[#FFA900]">₹{totalExpenses.toLocaleString()}</p>
+          <p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Total Investment</p>
+          <p className="text-3xl font-extrabold text-[#FFA900]">₹{totalCost.toLocaleString()}</p>
         </div>
 
         <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800">
