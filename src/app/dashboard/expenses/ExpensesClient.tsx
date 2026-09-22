@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Plus, Receipt, Loader2, Trash2 } from 'lucide-react';
+import { Plus, Receipt, Loader2, Trash2, Camera, ImageIcon, Eye } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import imageCompression from 'browser-image-compression';
 
 export default function ExpensesClient({ initialExpenses, seasons }: { initialExpenses: any[], seasons: any[] }) {
   const router = useRouter();
@@ -12,6 +13,8 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
   const [loading, setLoading] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [receiptFile, setReceiptFile] = useState<File | null>(null);
+  const [existingReceiptUrl, setExistingReceiptUrl] = useState<string | null>(null);
   
   const defaultForm = {
     seasonId: seasons[0]?.id || '',
@@ -29,6 +32,8 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
     setFormData(defaultForm);
     setIsEditMode(false);
     setEditingId(null);
+    setReceiptFile(null);
+    setExistingReceiptUrl(null);
     setIsModalOpen(true);
   };
 
@@ -41,7 +46,15 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
     });
     setIsEditMode(true);
     setEditingId(exp.id);
+    setReceiptFile(null);
+    setExistingReceiptUrl(exp.receiptUrl || null);
     setIsModalOpen(true);
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setReceiptFile(e.target.files[0]);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -49,11 +62,39 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
     setLoading(true);
 
     try {
+      let receiptUrl = existingReceiptUrl;
+
+      if (receiptFile) {
+        toast.loading('Uploading receipt...', { id: 'upload-toast' });
+        
+        const options = {
+          maxSizeMB: 1,
+          maxWidthOrHeight: 1200,
+          useWebWorker: true
+        };
+        const compressedFile = await imageCompression(receiptFile, options);
+        
+        const formDataImg = new FormData();
+        formDataImg.append('file', compressedFile);
+        const uploadRes = await fetch('/api/upload', {
+          method: 'POST',
+          body: formDataImg,
+        });
+        const uploadData = await uploadRes.json();
+        if (!uploadRes.ok) {
+          toast.dismiss('upload-toast');
+          throw new Error(uploadData.error || 'Receipt upload failed');
+        }
+        receiptUrl = uploadData.url;
+        toast.dismiss('upload-toast');
+      }
+
       const payload = {
         seasonId: formData.seasonId,
         category: formData.category,
         amount: parseFloat(formData.amount || '0'),
         description: formData.description,
+        receiptUrl,
       };
 
       if (isEditMode && editingId) {
@@ -117,6 +158,7 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
               <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Category</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Season</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Amount</th>
+              <th className="px-6 py-3 text-center text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Receipt</th>
               <th className="px-6 py-3 text-right text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
@@ -147,6 +189,15 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-rose-600 dark:text-rose-400">
                   ₹{exp.amount}
                 </td>
+                <td className="px-6 py-4 whitespace-nowrap text-center">
+                  {exp.receiptUrl ? (
+                    <a href={exp.receiptUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="inline-flex items-center justify-center p-2 rounded-full text-indigo-600 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:hover:bg-indigo-900/50 transition-colors" title="View Receipt">
+                      <Eye className="w-4 h-4" />
+                    </a>
+                  ) : (
+                    <span className="text-xs text-slate-400">-</span>
+                  )}
+                </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div className="flex items-center justify-end gap-3" onClick={(e) => e.stopPropagation()}>
                     <button onClick={() => handleDelete(exp.id)} className="text-slate-400 hover:text-rose-600 transition-colors" title="Delete Expense">
@@ -158,7 +209,7 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
             ))}
             {initialExpenses.length === 0 && (
               <tr>
-                <td colSpan={4} className="px-6 py-12 text-center text-sm text-slate-500">
+                <td colSpan={6} className="px-6 py-12 text-center text-sm text-slate-500">
                   No expenses recorded yet.
                 </td>
               </tr>
@@ -198,6 +249,7 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Category</label>
                         <select required name="category" value={formData.category} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border">
                           <option value="Transport">Transport / Tempo</option>
+                          <option value="Ganpati Purchase">Ganpati Purchase (Stock)</option>
                           <option value="Labour">Labour / Hamali</option>
                           <option value="Shop Rent">Shop Rent</option>
                           <option value="Decoration">Decoration / Mandap</option>
@@ -214,6 +266,38 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
                       <div className="sm:col-span-2">
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Description (Optional)</label>
                         <textarea name="description" value={formData.description} onChange={handleChange} rows={2} placeholder="e.g. Paid to driver Ramu" className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border"></textarea>
+                      </div>
+
+                      <div className="sm:col-span-2">
+                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Receipt / Bill Photo (Optional)</label>
+                        <div className="flex gap-2 mt-1">
+                          <label className="flex-1 cursor-pointer flex flex-col items-center justify-center gap-1 py-3 px-2 border-2 border-dashed border-indigo-200 dark:border-indigo-800/50 rounded-xl bg-indigo-50/50 dark:bg-indigo-900/10 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition-colors">
+                            <Camera className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                            <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400">Take Photo</span>
+                            <input type="file" accept="image/*" capture="environment" onChange={handleImageChange} className="hidden" />
+                          </label>
+                          <label className="flex-1 cursor-pointer flex flex-col items-center justify-center gap-1 py-3 px-2 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50/50 dark:bg-slate-800/30 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            <ImageIcon className="w-5 h-5 text-slate-600 dark:text-slate-400" />
+                            <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">From Gallery</span>
+                            <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
+                          </label>
+                        </div>
+                        {receiptFile && (
+                          <div className="mt-2 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg flex items-center justify-between border border-indigo-100 dark:border-indigo-800/30">
+                            <span className="text-xs font-medium text-indigo-600 dark:text-indigo-400 truncate max-w-[200px]">{receiptFile.name}</span>
+                            <button type="button" onClick={() => setReceiptFile(null)} className="text-rose-500 hover:text-rose-600 bg-rose-50 dark:bg-rose-900/30 p-1 rounded-md">
+                              <Trash2 className="w-3 h-3" />
+                            </button>
+                          </div>
+                        )}
+                        {!receiptFile && existingReceiptUrl && (
+                          <div className="mt-2 p-2 bg-slate-50 dark:bg-slate-800/50 rounded-lg flex items-center justify-between border border-slate-200 dark:border-slate-700">
+                            <span className="text-xs font-medium text-slate-600 dark:text-slate-400">Existing receipt attached</span>
+                            <a href={existingReceiptUrl} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 flex items-center gap-1 text-xs font-semibold">
+                              <Eye className="w-3 h-3" /> View
+                            </a>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>

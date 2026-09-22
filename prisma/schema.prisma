@@ -130,6 +130,7 @@ model Expense {
   amount        Float
   expenseDate   DateTime  @default(now())
   description   String?
+  receiptUrl    String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 

@@ -15,11 +15,17 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
     if (!session?.userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const body = await req.json();
-    const data = expenseSchema.parse(body);
+    const { category, amount, expenseDate, description, receiptUrl } = body;
 
     const updatedExpense = await prisma.expense.update({
       where: { id: params.id },
-      data,
+      data: {
+        category,
+        amount: amount ? parseFloat(amount) : undefined,
+        expenseDate: expenseDate ? new Date(expenseDate) : undefined,
+        description,
+        receiptUrl,
+      },
       include: { season: true },
     });
 

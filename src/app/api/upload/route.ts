@@ -36,8 +36,8 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ url: (uploadResult as any).secure_url });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Upload error:', error);
-    return NextResponse.json({ error: 'Failed to upload file to cloud' }, { status: 500 });
+    return NextResponse.json({ error: error.message || 'Failed to upload file to cloud' }, { status: 500 });
   }
 }

@@ -43,7 +43,10 @@ export default async function DashboardPage() {
   });
 
   expenses.forEach(exp => {
-    totalExpenses += exp.amount;
+    // Exclude 'Ganpati Purchase' from totalExpenses because it's already counted in totalStockCost
+    if (exp.category !== 'Ganpati Purchase') {
+      totalExpenses += exp.amount;
+    }
   });
 
   let pickedUpStock = 0;

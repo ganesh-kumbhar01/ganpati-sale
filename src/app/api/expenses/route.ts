@@ -8,6 +8,7 @@ const expenseSchema = z.object({
   category: z.string().min(1),
   amount: z.number().min(0),
   description: z.string().optional(),
+  receiptUrl: z.string().optional(),
 });
 
 export async function GET(req: Request) {
@@ -48,6 +49,7 @@ export async function POST(req: Request) {
         category: data.category,
         amount: data.amount,
         description: data.description || null,
+        receiptUrl: data.receiptUrl || null,
       },
       include: { season: true },
     });
