@@ -1,0 +1,137 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password_hash String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  businesses    Business[]
+}
+
+model Business {
+  id            String    @id @default(cuid())
+  userId        String
+  name          String
+  ownerName     String
+  mobile        String
+  address       String?
+  city          String?
+  state         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  seasons       Season[]
+  customers     Customer[]
+}
+
+model Season {
+  id            String    @id @default(cuid())
+  businessId    String
+  name          String
+  year          Int
+  bookingStart  DateTime?
+  bookingEnd    DateTime?
+  status        String    @default("ACTIVE") // ACTIVE, COMPLETED
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  business      Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  products      Product[]
+  bookings      Booking[]
+  expenses      Expense[]
+}
+
+model Product {
+  id            String    @id @default(cuid())
+  seasonId      String
+  name          String
+  size          String?
+  material      String    @default("POP") // "POP" or "Eco-friendly"
+  purchasePrice Float
+  sellingPrice  Float
+  qtyPurchased  Int
+  qtyAvailable  Int
+  qtyBooked     Int       @default(0)
+  qtyPickedUp   Int       @default(0)
+  imageUrl      String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  season        Season    @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+  bookings      Booking[]
+}
+
+model Customer {
+  id            String    @id @default(cuid())
+  businessId    String
+  name          String
+  mobile        String
+  address       String?
+  customerType  String    @default("NEW") // NEW, RETURNING
+  isStarred     Boolean   @default(false)
+  notes         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  business      Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  bookings      Booking[]
+}
+
+model Booking {
+  id            String    @id @default(cuid())
+  seasonId      String
+  customerId    String
+  productId     String
+  quantity      Int
+  totalPrice    Float
+  advanceAmount Float     @default(0)
+  balanceAmount Float     @default(0)
+  bookingDate   DateTime  @default(now())
+  pickupDate    DateTime?
+  imageUrl      String?
+  status        String    @default("BOOKED") // BOOKED, COMPLETED, CANCELLED
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  season        Season    @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+  customer      Customer  @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  product       Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  payments      Payment[]
+}
+
+model Payment {
+  id            String    @id @default(cuid())
+  bookingId     String
+  amount        Float
+  paymentDate   DateTime  @default(now())
+  paymentType   String    @default("ADVANCE") // ADVANCE, FINAL
+  status        String    @default("PAID")
+  createdAt     DateTime  @default(now())
+
+  booking       Booking   @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+}
+
+
+model Expense {
+  id            String    @id @default(cuid())
+  seasonId      String
+  category      String
+  amount        Float
+  expenseDate   DateTime  @default(now())
+  description   String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  season        Season    @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+}
