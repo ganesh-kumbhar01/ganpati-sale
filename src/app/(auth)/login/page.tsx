@@ -1,11 +1,19 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { Loader2, Mail, Lock, User, Phone, Briefcase } from 'lucide-react';
 
 export default function AuthPage() {
+  return (
+    <Suspense fallback={<div className="flex justify-center p-8"><Loader2 className="animate-spin w-8 h-8 text-indigo-600" /></div>}>
+      <AuthForm />
+    </Suspense>
+  );
+}
+
+function AuthForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isLogin, setIsLogin] = useState(true);
