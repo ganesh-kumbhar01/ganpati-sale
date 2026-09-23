@@ -327,11 +327,11 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                   className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
                 />
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Customer</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Product</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Financials</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Actions</th>
+              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Customer</th>
+              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Product</th>
+              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Financials</th>
+              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Status</th>
+              <th className="px-6 py-4 text-right text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody className="bg-white dark:bg-slate-800 divide-y divide-slate-200 dark:divide-slate-700">
@@ -372,19 +372,19 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <div className="flex items-center justify-end gap-3" onClick={(e) => e.stopPropagation()}>
-                    <a href={`tel:${booking.customer?.mobile}`} className="text-slate-400 hover:text-indigo-600 transition-colors" title="Call Customer">
-                      <Phone className="w-4 h-4" />
+                  <div className="flex items-center justify-end gap-4 sm:gap-5" onClick={(e) => e.stopPropagation()}>
+                    <a href={`tel:${booking.customer?.mobile}`} className="text-slate-400 hover:text-indigo-600 transition-colors p-1" title="Call Customer">
+                      <Phone className="w-5 h-5" />
                     </a>
-                    <button onClick={() => handleSendWhatsApp(booking)} className="text-slate-400 hover:text-green-600 transition-colors" title="Send WhatsApp">
-                      <MessageCircle className="w-4 h-4" />
+                    <button onClick={() => handleSendWhatsApp(booking)} className="text-slate-400 hover:text-emerald-600 transition-colors p-1" title="Send WhatsApp">
+                      <MessageCircle className="w-5 h-5" />
                     </button>
-                    <div className="w-px h-4 bg-slate-300 dark:bg-slate-700"></div>
-                    <button onClick={() => openEditModal(booking)} className="text-slate-400 hover:text-indigo-600 transition-colors" title="Edit Booking">
-                      <Edit2 className="w-4 h-4" />
+                    <div className="w-px h-6 bg-slate-300 dark:bg-slate-700 mx-1"></div>
+                    <button onClick={() => openEditModal(booking)} className="text-slate-400 hover:text-indigo-600 transition-colors p-1" title="Edit Booking">
+                      <Edit2 className="w-5 h-5" />
                     </button>
-                    <button onClick={() => handleDelete(booking.id)} className="text-slate-400 hover:text-rose-600 transition-colors" title="Delete Booking">
-                      <Trash2 className="w-4 h-4" />
+                    <button onClick={() => handleDelete(booking.id)} className="text-slate-400 hover:text-rose-600 transition-colors p-1" title="Delete Booking">
+                      <Trash2 className="w-5 h-5" />
                     </button>
                   </div>
                 </td>
