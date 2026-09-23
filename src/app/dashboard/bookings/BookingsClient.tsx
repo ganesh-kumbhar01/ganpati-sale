@@ -276,39 +276,41 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
 
   return (
     <div>
-      <div className="mb-6 flex justify-between items-center">
-        <div className="flex gap-3">
-          <button
-            onClick={openNewModal}
-            className="inline-flex items-center justify-center rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
-          >
-            <Plus className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-            Advance Booking
-          </button>
-          
-          <button
-            onClick={openDirectSaleModal}
-            className="inline-flex items-center justify-center rounded-lg border border-transparent bg-emerald-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 sm:w-auto"
-          >
-            <Plus className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-            Direct Sale
-          </button>
-        </div>
-
-        {selectedIds.length > 0 && (
-          <div className="flex items-center gap-4 bg-white dark:bg-slate-800 px-4 py-2 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">
-            <span className="text-sm font-medium text-slate-700 dark:text-slate-300 mr-2">{selectedIds.length} selected</span>
-            
-            <button onClick={handleExportCSV} className="inline-flex items-center text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-indigo-600">
-              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-              Export CSV
+      <div className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+        {selectedIds.length === 0 ? (
+          <div className="flex w-full sm:w-auto gap-3">
+            <button
+              onClick={openNewModal}
+              className="flex-1 sm:flex-none inline-flex items-center justify-center rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-2 sm:px-4 py-2.5 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            >
+              <Plus className="-ml-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+              Advance Booking
             </button>
             
-            <div className="w-px h-5 bg-slate-200 dark:bg-slate-700"></div>
-
-            <button onClick={handleBulkDelete} disabled={loading} className="inline-flex items-center text-sm font-medium text-rose-600 hover:text-rose-500 disabled:opacity-50">
-              <Trash2 className="w-4 h-4 mr-1" /> Delete
+            <button
+              onClick={openDirectSaleModal}
+              className="flex-1 sm:flex-none inline-flex items-center justify-center rounded-lg border border-transparent bg-emerald-600 px-2 sm:px-4 py-2.5 text-xs sm:text-sm font-medium text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+            >
+              <Plus className="-ml-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+              Direct Sale
             </button>
+          </div>
+        ) : (
+          <div className="flex w-full items-center justify-between bg-white dark:bg-slate-800 px-4 py-2.5 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">
+            <span className="text-sm font-bold text-indigo-600 dark:text-indigo-400 whitespace-nowrap">{selectedIds.length} selected</span>
+            
+            <div className="flex items-center gap-4">
+              <button onClick={handleExportCSV} className="inline-flex items-center justify-center text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-indigo-600">
+                <svg className="w-4 h-4 sm:mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                <span className="hidden sm:inline">Export CSV</span>
+              </button>
+              
+              <div className="w-px h-5 bg-slate-200 dark:bg-slate-700"></div>
+
+              <button onClick={handleBulkDelete} disabled={loading} className="inline-flex items-center justify-center text-sm font-medium text-rose-600 hover:text-rose-500 disabled:opacity-50">
+                <Trash2 className="w-4 h-4 sm:mr-1" /> <span className="hidden sm:inline">Delete</span>
+              </button>
+            </div>
           </div>
         )}
       </div>
