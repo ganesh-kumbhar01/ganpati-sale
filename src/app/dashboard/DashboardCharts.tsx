@@ -33,7 +33,7 @@ export function DashboardCharts({ trendData, stockSummary }: { trendData: any[],
           ></div>
         </div>
         <div className="flex justify-between items-center mt-2">
-          <span className="text-xs font-semibold text-slate-500">{percent}% Booked or Delivered</span>
+          <span className="text-xs font-semibold text-slate-500">{percent}%</span>
           <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">{available} Available in Godown</span>
         </div>
       </div>
@@ -66,8 +66,8 @@ export function DashboardCharts({ trendData, stockSummary }: { trendData: any[],
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
               <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
               
-              <YAxis yAxisId="left" orientation="left" tick={{ fontSize: 10, fill: '#5340FF' }} axisLine={false} tickLine={false} />
-              <YAxis yAxisId="right" orientation="right" allowDecimals={false} tick={{ fontSize: 10, fill: '#00D48D' }} axisLine={false} tickLine={false} />
+              <YAxis yAxisId="left" orientation="left" tickFormatter={(val) => `₹${val}`} tick={{ fontSize: 10, fill: '#5340FF' }} axisLine={false} tickLine={false} />
+              <YAxis yAxisId="right" orientation="right" tickFormatter={(val) => `Qty ${val}`} allowDecimals={false} tick={{ fontSize: 10, fill: '#00D48D' }} axisLine={false} tickLine={false} />
               
               <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)', fontSize: '12px' }} />
               

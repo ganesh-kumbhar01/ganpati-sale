@@ -144,18 +144,18 @@ export default async function DashboardPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
         <div className="min-w-0 flex-1">
-          <h2 className="text-2xl font-bold leading-7 text-slate-900 dark:text-white sm:truncate sm:text-3xl sm:tracking-tight">
+          <h2 className="text-xl font-bold leading-7 text-slate-900 dark:text-white sm:truncate sm:text-2xl sm:tracking-tight">
             {getGreeting()}, {business.ownerName}
           </h2>
           <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
             Here is what's happening with your business system today.
           </p>
         </div>
-        <div className="flex items-center gap-3">
-          <Link href="/dashboard/products" className="inline-flex items-center justify-center rounded-lg bg-white dark:bg-slate-800 px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 shadow-sm ring-1 ring-inset ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
+        <div className="flex w-full md:w-auto items-center justify-center gap-3 mt-2 sm:mt-0">
+          <Link href="/dashboard/products" className="flex-1 sm:flex-none inline-flex items-center justify-center rounded-lg bg-white dark:bg-slate-800 px-5 py-2.5 text-sm font-semibold text-slate-700 dark:text-slate-200 shadow-sm ring-1 ring-inset ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
             Add Stock
           </Link>
-          <Link href="/dashboard/bookings" className="inline-flex items-center justify-center rounded-lg bg-[#5340FF] px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          <Link href="/dashboard/bookings" className="flex-1 sm:flex-none inline-flex items-center justify-center rounded-lg bg-[#5340FF] px-5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
             New Booking
           </Link>
         </div>
@@ -166,27 +166,27 @@ export default async function DashboardPage() {
         
         <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800">
           <p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Total Revenue</p>
-          <p className="text-3xl font-extrabold text-slate-900 dark:text-white">₹{totalRevenue.toLocaleString()}</p>
+          <p className="text-3xl font-extrabold text-[#5340FF]">₹{totalRevenue.toLocaleString()}</p>
         </div>
 
         <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800">
           <p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Total Stock Cost</p>
-          <p className="text-3xl font-extrabold text-[#B344FF]">₹{totalStockCost.toLocaleString()}</p>
+          <p className="text-3xl font-extrabold text-[#5340FF]">₹{totalStockCost.toLocaleString()}</p>
         </div>
 
         <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800">
           <p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Total Investment</p>
-          <p className="text-3xl font-extrabold text-[#FFA900]">₹{totalCost.toLocaleString()}</p>
+          <p className="text-3xl font-extrabold text-[#5340FF]">₹{totalCost.toLocaleString()}</p>
         </div>
 
         <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800">
           <p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Total Bookings</p>
-          <p className="text-3xl font-extrabold text-[#00D48D]">{allBookings.length}</p>
+          <p className="text-3xl font-extrabold text-[#5340FF]">{allBookings.length}</p>
         </div>
 
         <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800">
           <p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Booked / Total Murtis</p>
-          <p className="text-3xl font-extrabold text-[#FF4C4C]">
+          <p className="text-3xl font-extrabold text-[#5340FF]">
             {stockSummary.total.booked + stockSummary.total.pickedUp} <span className="text-sm font-semibold text-slate-400">/ {stockSummary.total.stock}</span>
           </p>
         </div>
@@ -228,9 +228,9 @@ export default async function DashboardPage() {
                         <span className={`inline-flex items-center rounded-md px-2 py-0.5 text-[10px] font-bold ring-1 ring-inset ${
                           b.status === 'COMPLETED' ? 'bg-emerald-50 text-emerald-700 ring-emerald-600/20' : 
                           b.status === 'CANCELLED' ? 'bg-rose-50 text-rose-700 ring-rose-600/20' : 
-                          'bg-amber-50 text-amber-700 ring-amber-600/20'
+                          'bg-indigo-50 text-indigo-700 ring-indigo-600/20'
                         }`}>
-                          {b.status}
+                          {b.status === 'BOOKED' ? 'Confirmed' : b.status}
                         </span>
                         <p className="text-[10px] font-medium text-slate-400 mt-1">
                           {new Date(b.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
@@ -241,9 +241,9 @@ export default async function DashboardPage() {
                       <span className={`inline-flex items-center rounded-md px-2 py-1 text-[10px] font-bold ring-1 ring-inset ${
                         b.status === 'COMPLETED' ? 'bg-emerald-50 text-emerald-700 ring-emerald-600/20' : 
                         b.status === 'CANCELLED' ? 'bg-rose-50 text-rose-700 ring-rose-600/20' : 
-                        'bg-amber-50 text-amber-700 ring-amber-600/20'
+                        'bg-indigo-50 text-indigo-700 ring-indigo-600/20'
                       }`}>
-                        {b.status}
+                        {b.status === 'BOOKED' ? 'Confirmed' : b.status}
                       </span>
                     </div>
                     <div className="hidden sm:block text-right">
@@ -261,7 +261,7 @@ export default async function DashboardPage() {
         {/* Upcoming Pickups -> Agent Performance */}
         <div className="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-100 dark:border-slate-800">
           <div className="flex justify-between items-center mb-6">
-            <h3 className="text-sm font-bold text-slate-900 dark:text-white">Pending Actions (Pickups)</h3>
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white">Pending Delivery</h3>
           </div>
 
           <div className="hidden sm:grid grid-cols-4 gap-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-4 px-2">
@@ -283,18 +283,18 @@ export default async function DashboardPage() {
                         <p className="text-xs sm:text-[11px] text-slate-500 truncate">{b.customer.mobile}</p>
                       </div>
                       {/* Mobile Only Action & Pending */}
-                      <div className="flex flex-col items-end sm:hidden">
-                        <span className="text-sm font-extrabold text-[#FF4C4C] mb-1">
+                      <div className="flex flex-col items-center justify-center sm:hidden w-28">
+                        <span className="text-[11px] font-extrabold text-[#FF4C4C] mb-1">
                           ₹{b.balanceAmount}
                         </span>
-                        <Link href="/dashboard/pickup" className="inline-flex items-center justify-center rounded-md bg-indigo-50 px-3 py-1 text-[11px] font-bold text-indigo-700 ring-1 ring-inset ring-indigo-600/20">
-                          Deliver
+                        <Link href="/dashboard/pickup" className="w-full text-center inline-flex items-center justify-center rounded-md bg-indigo-50 px-2 py-1.5 text-[10px] font-bold text-indigo-700 ring-1 ring-inset ring-indigo-600/20">
+                          Pending Delivery
                         </Link>
                       </div>
                     </div>
                     <div className="hidden sm:block text-center">
                       <Link href="/dashboard/pickup" className="text-[11px] font-bold text-[#5340FF] hover:underline">
-                        Deliver
+                        Pending Delivery
                       </Link>
                     </div>
                     <div className="hidden sm:block text-right">

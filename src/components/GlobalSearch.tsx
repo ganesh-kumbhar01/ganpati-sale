@@ -65,7 +65,7 @@ export function GlobalSearch() {
             setQuery(e.target.value);
             if (e.target.value.length > 0) setIsOpen(true);
           }}
-          className="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800 py-2 pl-10 pr-3 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-slate-900 dark:text-white"
+          className="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-800 py-2 pl-10 pr-3 text-base sm:text-sm placeholder-slate-500 dark:placeholder-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-slate-900 dark:text-white"
         />
       </div>
 

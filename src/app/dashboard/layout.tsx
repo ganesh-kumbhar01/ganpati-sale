@@ -79,7 +79,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </div>
             
             <div className="flex items-center gap-x-2 sm:gap-x-4 ml-auto">
-              <div className="md:hidden w-32 sm:w-64">
+              <div className="md:hidden w-48 sm:w-64">
                 <GlobalSearch />
               </div>
               <ThemeToggle />
