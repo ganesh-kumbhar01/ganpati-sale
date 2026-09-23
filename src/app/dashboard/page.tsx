@@ -3,7 +3,7 @@ import prisma from '@/lib/db';
 import { getSession } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { IndianRupee, Package, ShoppingCart, Users, CheckCircle, ArrowRight } from 'lucide-react';
+import { IndianRupee, Package, ShoppingCart, Users, CheckCircle, ArrowRight, Wallet } from 'lucide-react';
 import { DashboardCharts } from './DashboardCharts';
 
 export default async function DashboardPage() {
@@ -162,31 +162,56 @@ export default async function DashboardPage() {
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-5">
         
-        <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800">
-          <p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Total Revenue</p>
-          <p className="text-3xl font-extrabold text-[#5340FF]">₹{totalRevenue.toLocaleString()}</p>
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-3">
+            <p className="truncate text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400">Total Revenue</p>
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-50 dark:bg-emerald-900/20 flex flex-shrink-0 items-center justify-center">
+              <IndianRupee className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-600 dark:text-emerald-400" />
+            </div>
+          </div>
+          <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">₹{totalRevenue.toLocaleString()}</p>
         </div>
 
-        <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800">
-          <p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Total Stock Cost</p>
-          <p className="text-3xl font-extrabold text-[#5340FF]">₹{totalStockCost.toLocaleString()}</p>
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-3">
+            <p className="truncate text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400">Stock Cost</p>
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-rose-50 dark:bg-rose-900/20 flex flex-shrink-0 items-center justify-center">
+              <Package className="w-3 h-3 sm:w-4 sm:h-4 text-rose-600 dark:text-rose-400" />
+            </div>
+          </div>
+          <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">₹{totalStockCost.toLocaleString()}</p>
         </div>
 
-        <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800">
-          <p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Total Investment</p>
-          <p className="text-3xl font-extrabold text-[#5340FF]">₹{totalCost.toLocaleString()}</p>
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-3">
+            <p className="truncate text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400">Total Investment</p>
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber-50 dark:bg-amber-900/20 flex flex-shrink-0 items-center justify-center">
+              <Wallet className="w-3 h-3 sm:w-4 sm:h-4 text-amber-600 dark:text-amber-400" />
+            </div>
+          </div>
+          <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">₹{totalCost.toLocaleString()}</p>
         </div>
 
-        <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800">
-          <p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Total Bookings</p>
-          <p className="text-3xl font-extrabold text-[#5340FF]">{allBookings.length}</p>
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-3">
+            <p className="truncate text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400">Bookings</p>
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-indigo-50 dark:bg-indigo-900/20 flex flex-shrink-0 items-center justify-center">
+              <ShoppingCart className="w-3 h-3 sm:w-4 sm:h-4 text-[#5340FF] dark:text-indigo-400" />
+            </div>
+          </div>
+          <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">{allBookings.length}</p>
         </div>
 
-        <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800">
-          <p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Booked / Total Murtis</p>
-          <p className="text-3xl font-extrabold text-[#5340FF]">
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col justify-between col-span-2 lg:col-span-1">
+          <div className="flex items-center justify-between mb-3">
+            <p className="truncate text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400">Booked Murtis</p>
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-sky-50 dark:bg-sky-900/20 flex flex-shrink-0 items-center justify-center">
+              <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-sky-600 dark:text-sky-400" />
+            </div>
+          </div>
+          <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
             {stockSummary.total.booked + stockSummary.total.pickedUp} <span className="text-sm font-semibold text-slate-400">/ {stockSummary.total.stock}</span>
           </p>
         </div>
