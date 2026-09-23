@@ -420,23 +420,23 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                         </select>
                       </div>
 
-                      <div className="sm:col-span-2 bg-indigo-50 dark:bg-indigo-900/20 -mx-4 px-4 py-2 mt-2 sm:mx-0 sm:rounded-lg border-l-4 border-indigo-500">
-                        <h4 className="text-base font-bold text-indigo-800 dark:text-indigo-300">Customer Details</h4>
+                      <div className="sm:col-span-2 border-t border-slate-200 dark:border-slate-700 pt-6 mt-4">
+                        <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-2">Customer Details</h4>
                       </div>
                       
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Customer Name</label>
-                        <input required type="text" name="customerName" value={formData.customerName} onChange={handleChange} placeholder="e.g. Ramesh Kumar" className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border placeholder-slate-400" />
+                        <input required type="text" name="customerName" value={formData.customerName} onChange={handleChange} placeholder="e.g. Ramesh Kumar" className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border placeholder-slate-300 dark:placeholder-slate-500" />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Mobile Number</label>
-                        <input required type="tel" name="customerMobile" value={formData.customerMobile} onChange={handleChange} placeholder="e.g. 9876543210" className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border placeholder-slate-400" />
+                        <input required type="tel" name="customerMobile" value={formData.customerMobile} onChange={handleChange} placeholder="e.g. 9876543210" className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border placeholder-slate-300 dark:placeholder-slate-500" />
                       </div>
 
                       {!isEditMode && (
                         <>
-                          <div className="sm:col-span-2 bg-indigo-50 dark:bg-indigo-900/20 -mx-4 px-4 py-2 mt-2 sm:mx-0 sm:rounded-lg border-l-4 border-indigo-500">
-                            <h4 className="text-base font-bold text-indigo-800 dark:text-indigo-300">Product Selection</h4>
+                          <div className="sm:col-span-2 border-t border-slate-200 dark:border-slate-700 pt-6 mt-4">
+                            <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-2">Product Selection</h4>
                           </div>
 
                           <div className="sm:col-span-2 flex flex-wrap gap-4 mb-2">
@@ -516,8 +516,8 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
 
                       {!isEditMode && (
                         <>
-                          <div className="sm:col-span-2 bg-indigo-50 dark:bg-indigo-900/20 -mx-4 px-4 py-2 mt-2 sm:mx-0 sm:rounded-lg border-l-4 border-indigo-500">
-                            <h4 className="text-base font-bold text-indigo-800 dark:text-indigo-300">Product Photo (Optional)</h4>
+                          <div className="sm:col-span-2 border-t border-slate-200 dark:border-slate-700 pt-6 mt-4">
+                            <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-2">Product Photo (Optional)</h4>
                           </div>
 
                           <div className="sm:col-span-2">
@@ -528,18 +528,18 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                         </>
                       )}
 
-                      <div className="sm:col-span-2 bg-indigo-50 dark:bg-indigo-900/20 -mx-4 px-4 py-2 mt-2 sm:mx-0 sm:rounded-lg border-l-4 border-indigo-500">
-                        <h4 className="text-base font-bold text-indigo-800 dark:text-indigo-300">Payment Details</h4>
+                      <div className="sm:col-span-2 border-t border-slate-200 dark:border-slate-700 pt-6 mt-4">
+                        <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-2">Payment Details</h4>
                       </div>
 
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">{isDirectSale ? 'Price Paid (₹)' : 'Total Price (₹)'}</label>
-                        <input required type="number" step="0.01" name="totalPrice" placeholder="e.g. 5000" value={formData.totalPrice} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border font-bold placeholder-slate-400" />
+                        <input required type="number" step="0.01" name="totalPrice" placeholder="e.g. 5000" value={formData.totalPrice} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border font-bold placeholder-slate-300 dark:placeholder-slate-500" />
                       </div>
                       {!isDirectSale && (
                         <div>
                           <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Advance Amount Paid (₹)</label>
-                          <input required type="number" step="0.01" min="0" name="advanceAmount" placeholder="e.g. 2000" value={formData.advanceAmount} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-emerald-50 dark:bg-slate-900 text-emerald-700 dark:text-emerald-400 px-3 py-2 border font-bold placeholder-emerald-300" />
+                          <input required type="number" step="0.01" min="0" name="advanceAmount" placeholder="e.g. 2000" value={formData.advanceAmount} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-emerald-50 dark:bg-slate-900 text-emerald-700 dark:text-emerald-400 px-3 py-2 border font-bold placeholder-emerald-200 dark:placeholder-emerald-800/50" />
                         </div>
                       )}
 
