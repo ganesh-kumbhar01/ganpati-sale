@@ -154,11 +154,11 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
                   className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
                 />
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Customer Name</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Mobile</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Bookings</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Purchased Items</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Actions</th>
+              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Customer Name</th>
+              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Mobile</th>
+              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Total Bookings</th>
+              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Purchased Items</th>
+              <th className="px-6 py-4 text-right text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody className="bg-white dark:bg-slate-800 divide-y divide-slate-200 dark:divide-slate-700">
@@ -214,19 +214,20 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium" onClick={(e) => e.stopPropagation()}>
-                  <div className="flex items-center justify-end gap-3">
+                  <div className="flex items-center justify-end gap-4 sm:gap-5">
                     <button 
                       onClick={() => handleToggleStar(customer)} 
-                      className="text-slate-400 hover:text-yellow-500 transition-colors" 
+                      className="text-slate-400 hover:text-yellow-500 transition-colors p-1" 
                       title={customer.isStarred ? "Remove Star" : "Add Star"}
                     >
-                      <Star className={`w-4 h-4 ${customer.isStarred ? 'text-yellow-400 fill-yellow-400' : ''}`} />
+                      <Star className={`w-5 h-5 ${customer.isStarred ? 'text-yellow-400 fill-yellow-400' : ''}`} />
                     </button>
-                    <a href={`tel:${customer.mobile}`} className="text-slate-400 hover:text-indigo-600 transition-colors" title="Call Customer">
-                      <Phone className="w-4 h-4" />
+                    <div className="w-px h-6 bg-slate-300 dark:bg-slate-700 mx-1"></div>
+                    <a href={`tel:${customer.mobile}`} className="text-slate-400 hover:text-indigo-600 transition-colors p-1" title="Call Customer">
+                      <Phone className="w-5 h-5" />
                     </a>
-                    <button onClick={() => handleSendWhatsApp(customer)} className="text-slate-400 hover:text-green-600 transition-colors" title="Send WhatsApp">
-                      <MessageCircle className="w-4 h-4" />
+                    <button onClick={() => handleSendWhatsApp(customer)} className="text-slate-400 hover:text-emerald-600 transition-colors p-1" title="Send WhatsApp">
+                      <MessageCircle className="w-5 h-5" />
                     </button>
                   </div>
                 </td>
