@@ -420,37 +420,37 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                         </select>
                       </div>
 
-                      <div className="sm:col-span-2 border-t border-slate-200 dark:border-slate-700 pt-4 mt-2">
-                        <h4 className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3">Customer Details</h4>
+                      <div className="sm:col-span-2 bg-indigo-50 dark:bg-indigo-900/20 -mx-4 px-4 py-2 mt-2 sm:mx-0 sm:rounded-lg border-l-4 border-indigo-500">
+                        <h4 className="text-base font-bold text-indigo-800 dark:text-indigo-300">Customer Details</h4>
                       </div>
                       
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Customer Name</label>
-                        <input required type="text" name="customerName" value={formData.customerName} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border" />
+                        <input required type="text" name="customerName" value={formData.customerName} onChange={handleChange} placeholder="e.g. Ramesh Kumar" className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border placeholder-slate-400" />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Mobile Number</label>
-                        <input required type="tel" name="customerMobile" value={formData.customerMobile} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border" />
+                        <input required type="tel" name="customerMobile" value={formData.customerMobile} onChange={handleChange} placeholder="e.g. 9876543210" className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border placeholder-slate-400" />
                       </div>
 
                       {!isEditMode && (
                         <>
-                          <div className="sm:col-span-2 border-t border-slate-200 dark:border-slate-700 pt-4 mt-2">
-                            <h4 className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3">Product Selection</h4>
+                          <div className="sm:col-span-2 bg-indigo-50 dark:bg-indigo-900/20 -mx-4 px-4 py-2 mt-2 sm:mx-0 sm:rounded-lg border-l-4 border-indigo-500">
+                            <h4 className="text-base font-bold text-indigo-800 dark:text-indigo-300">Product Selection</h4>
                           </div>
 
-                          <div className="sm:col-span-2 flex gap-4 mb-2">
-                            <div className="flex-1">
+                          <div className="sm:col-span-2 flex flex-wrap gap-4 mb-2">
+                            <div>
                               <label className="block text-xs font-medium text-slate-500 mb-1">Filter by Material</label>
-                              <select value={filterMaterial} onChange={(e) => setFilterMaterial(e.target.value)} className="block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border">
+                              <select value={filterMaterial} onChange={(e) => setFilterMaterial(e.target.value)} className="block w-auto rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border">
                                 <option value="ALL">All Materials</option>
                                 <option value="POP">POP</option>
                                 <option value="Eco-friendly">Eco-friendly (Shadu Mati)</option>
                               </select>
                             </div>
-                            <div className="flex-1">
+                            <div>
                               <label className="block text-xs font-medium text-slate-500 mb-1">Filter by Size</label>
-                              <select value={filterSize} onChange={(e) => setFilterSize(e.target.value)} className="block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border">
+                              <select value={filterSize} onChange={(e) => setFilterSize(e.target.value)} className="block w-auto rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border">
                                 <option value="ALL">All Sizes</option>
                                 {uniqueSizes.map(size => (
                                   <option key={size} value={size}>{size}</option>
@@ -502,7 +502,7 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
 
                           <div>
                             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Quantity</label>
-                            <input required type="number" min="1" name="quantity" value={formData.quantity} onChange={handleQuantityChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border" />
+                            <input required type="number" min="1" name="quantity" value={formData.quantity} onChange={handleQuantityChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border" />
                           </div>
                         </>
                       )}
@@ -510,14 +510,14 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                       {!isDirectSale && (
                         <div>
                           <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Pickup Date</label>
-                          <input type="date" name="pickupDate" value={formData.pickupDate} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border" />
+                          <input type="date" name="pickupDate" value={formData.pickupDate} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border" />
                         </div>
                       )}
 
                       {!isEditMode && (
                         <>
-                          <div className="sm:col-span-2 border-t border-slate-200 dark:border-slate-700 pt-4 mt-2">
-                            <h4 className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3">Product Photo (Optional)</h4>
+                          <div className="sm:col-span-2 bg-indigo-50 dark:bg-indigo-900/20 -mx-4 px-4 py-2 mt-2 sm:mx-0 sm:rounded-lg border-l-4 border-indigo-500">
+                            <h4 className="text-base font-bold text-indigo-800 dark:text-indigo-300">Product Photo (Optional)</h4>
                           </div>
 
                           <div className="sm:col-span-2">
@@ -528,28 +528,28 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                         </>
                       )}
 
-                      <div className="sm:col-span-2 border-t border-slate-200 dark:border-slate-700 pt-4 mt-2">
-                        <h4 className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3">Payment Details</h4>
+                      <div className="sm:col-span-2 bg-indigo-50 dark:bg-indigo-900/20 -mx-4 px-4 py-2 mt-2 sm:mx-0 sm:rounded-lg border-l-4 border-indigo-500">
+                        <h4 className="text-base font-bold text-indigo-800 dark:text-indigo-300">Payment Details</h4>
                       </div>
 
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">{isDirectSale ? 'Price Paid (₹)' : 'Total Price (₹)'}</label>
-                        <input required type="number" step="0.01" name="totalPrice" value={formData.totalPrice} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border font-medium" />
+                        <input required type="number" step="0.01" name="totalPrice" placeholder="e.g. 5000" value={formData.totalPrice} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border font-bold placeholder-slate-400" />
                       </div>
                       {!isDirectSale && (
                         <div>
                           <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Advance Amount Paid (₹)</label>
-                          <input required type="number" step="0.01" min="0" name="advanceAmount" value={formData.advanceAmount} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border font-medium text-emerald-600 dark:text-emerald-400" />
+                          <input required type="number" step="0.01" min="0" name="advanceAmount" placeholder="e.g. 2000" value={formData.advanceAmount} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-emerald-50 dark:bg-slate-900 text-emerald-700 dark:text-emerald-400 px-3 py-2 border font-bold placeholder-emerald-300" />
                         </div>
                       )}
 
                     </div>
                   </div>
-                  <div className="bg-slate-50 dark:bg-slate-900/50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                    <button type="submit" disabled={loading} className="inline-flex w-full justify-center rounded-lg border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm disabled:opacity-50">
-                      {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : isEditMode ? 'Save Changes' : 'Confirm Booking'}
+                  <div className="bg-slate-50 dark:bg-slate-900/50 px-4 py-4 sm:flex sm:flex-row-reverse sm:px-6 border-t border-slate-200 dark:border-slate-700 pb-10 sm:pb-4">
+                    <button type="submit" disabled={loading} className="inline-flex w-full justify-center rounded-lg border border-transparent bg-indigo-600 px-4 py-3 sm:py-2 text-base font-bold text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm disabled:opacity-50">
+                      {loading ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : isEditMode ? 'Save Changes' : 'Confirm Booking'}
                     </button>
-                    <button type="button" onClick={() => setIsModalOpen(false)} className="mt-3 inline-flex w-full justify-center rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2 text-base font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm">
+                    <button type="button" onClick={() => setIsModalOpen(false)} className="mt-3 sm:mt-0 inline-flex w-full justify-center rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-3 sm:py-2 text-base font-bold text-slate-700 dark:text-slate-300 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto sm:text-sm">
                       Cancel
                     </button>
                   </div>
