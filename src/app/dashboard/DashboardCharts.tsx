@@ -47,8 +47,8 @@ export function DashboardCharts({ trendData, stockSummary }: { trendData: any[],
       <div className="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-100 dark:border-slate-800">
         <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1">Booking & Revenue Trend</h3>
         <p className="text-xs text-slate-500 mb-6">Daily sales volume</p>
-        <div className="h-48 w-full">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="h-48 w-full" style={{ WebkitTapHighlightColor: 'transparent', outline: 'none' }}>
+          <ResponsiveContainer width="100%" height="100%" className="focus:outline-none">
             <AreaChart
               data={trendData}
               margin={{ top: 0, right: 0, left: -20, bottom: 0 }}
@@ -69,10 +69,13 @@ export function DashboardCharts({ trendData, stockSummary }: { trendData: any[],
               <YAxis yAxisId="left" orientation="left" tickFormatter={(val) => `₹${val}`} tick={{ fontSize: 10, fill: '#5340FF' }} axisLine={false} tickLine={false} />
               <YAxis yAxisId="right" orientation="right" tickFormatter={(val) => `Qty ${val}`} allowDecimals={false} tick={{ fontSize: 10, fill: '#00D48D' }} axisLine={false} tickLine={false} />
               
-              <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)', fontSize: '12px' }} />
+              <Tooltip 
+                cursor={{ stroke: '#cbd5e1', strokeWidth: 1, strokeDasharray: '4 4' }} 
+                contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)', fontSize: '12px', outline: 'none' }} 
+              />
               
-              <Area yAxisId="left" type="monotone" dataKey="revenue" name="Revenue (₹)" stroke="#5340FF" strokeWidth={3} fillOpacity={1} fill="url(#colorRevenue)" />
-              <Area yAxisId="right" type="monotone" dataKey="bookings" name="Bookings (Qty)" stroke="#00D48D" strokeWidth={3} fillOpacity={1} fill="url(#colorBookings)" />
+              <Area yAxisId="left" type="natural" dataKey="revenue" name="Revenue (₹)" stroke="#5340FF" strokeWidth={3} fillOpacity={1} fill="url(#colorRevenue)" activeDot={{ r: 5, strokeWidth: 0 }} />
+              <Area yAxisId="right" type="natural" dataKey="bookings" name="Bookings (Qty)" stroke="#00D48D" strokeWidth={3} fillOpacity={1} fill="url(#colorBookings)" activeDot={{ r: 5, strokeWidth: 0 }} />
             </AreaChart>
           </ResponsiveContainer>
         </div>
