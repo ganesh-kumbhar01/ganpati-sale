@@ -8,13 +8,27 @@ import { useRouter } from 'next/navigation';
 export default function CustomersClient({ initialCustomers }: { initialCustomers: any[] }) {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState<'DEFAULT' | 'SPEND'>('DEFAULT');
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [viewCustomer, setViewCustomer] = useState<any>(null);
   const [editingNotes, setEditingNotes] = useState(false);
   const [notesTemp, setNotesTemp] = useState('');
   const [savingNotes, setSavingNotes] = useState(false);
 
-  const filteredCustomers = initialCustomers.filter(c => 
+  const customersWithData = initialCustomers.map(c => ({
+    ...c,
+    totalSpent: c.bookings.reduce((sum: number, b: any) => sum + (b.totalPrice || 0), 0)
+  }));
+
+  let processedCustomers = [...customersWithData];
+  if (sortBy === 'SPEND') {
+    processedCustomers.sort((a, b) => b.totalSpent - a.totalSpent);
+  } else {
+    // Sort starred first
+    processedCustomers.sort((a, b) => (b.isStarred === a.isStarred ? 0 : b.isStarred ? 1 : -1));
+  }
+
+  const filteredCustomers = processedCustomers.filter(c => 
     c.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
     c.mobile.includes(searchTerm)
   );
@@ -117,17 +131,27 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
   return (
     <div>
       <div className="mb-6 flex justify-between items-center flex-wrap gap-4">
-        <div className="relative w-full max-w-md">
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <Search className="h-5 w-5 text-slate-400" aria-hidden="true" />
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto flex-1 max-w-2xl">
+          <div className="relative flex-1">
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+              <Search className="h-5 w-5 text-slate-400" aria-hidden="true" />
+            </div>
+            <input
+              type="text"
+              placeholder="Search by name or mobile..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 pl-10 pr-3 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500"
+            />
           </div>
-          <input
-            type="text"
-            placeholder="Search by name or mobile..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 pl-10 pr-3 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-slate-900 dark:text-white"
-          />
+          <select 
+            value={sortBy} 
+            onChange={(e) => setSortBy(e.target.value as 'DEFAULT' | 'SPEND')}
+            className="block w-full sm:w-auto rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 pl-3 pr-8 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-slate-900 dark:text-white"
+          >
+            <option value="DEFAULT">Sort by Default</option>
+            <option value="SPEND">Sort by Spend (High to Low)</option>
+          </select>
         </div>
 
         {selectedIds.length > 0 && (
@@ -156,7 +180,7 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
               </th>
               <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Customer Name</th>
               <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Mobile</th>
-              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Total Bookings</th>
+              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Bookings & Spend</th>
               <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Purchased Items</th>
               <th className="px-6 py-4 text-right text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Actions</th>
             </tr>
@@ -200,8 +224,13 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">
                   {customer.mobile}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-slate-900 dark:text-white">
-                  {customer.bookings.length}
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm font-semibold text-slate-900 dark:text-white">
+                    {customer.bookings.length} <span className="text-xs text-slate-500 font-normal">orders</span>
+                  </div>
+                  <div className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">
+                    ₹{customer.totalSpent}
+                  </div>
                 </td>
                 <td className="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">
                   <div className="flex flex-wrap gap-2 max-w-[200px] truncate">
@@ -250,8 +279,8 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
           <div className="fixed inset-0 bg-slate-900/75 backdrop-blur-sm transition-opacity" onClick={() => setViewCustomer(null)}></div>
           <div className="fixed inset-0 z-10 overflow-y-auto">
             <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <div className="relative transform overflow-hidden rounded-2xl bg-white dark:bg-slate-800 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl border border-slate-200 dark:border-slate-700">
-                <div className="px-6 pb-6 pt-6">
+              <div className="relative transform overflow-hidden rounded-2xl bg-white dark:bg-slate-800 text-left shadow-xl transition-all w-full max-w-full sm:my-8 sm:w-full sm:max-w-3xl border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto">
+                <div className="px-4 pb-24 pt-5 sm:p-6 sm:pb-6">
                   
                   {/* Header Actions */}
                   <div className="flex justify-between items-start mb-6">
@@ -266,7 +295,13 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
                             <Star className={`w-5 h-5 ${viewCustomer.isStarred ? 'text-yellow-400 fill-yellow-400' : 'text-slate-300 dark:text-slate-600 hover:text-yellow-400'}`} />
                           </button>
                         </h3>
-                        <p className="text-slate-500">📞 {viewCustomer.mobile} &bull; {viewCustomer.customerType}</p>
+                        <p className="text-slate-500 text-sm mt-1 flex items-center flex-wrap gap-2">
+                          <span>📞 {viewCustomer.mobile}</span>
+                          <span className="hidden sm:inline">&bull;</span>
+                          <span>{viewCustomer.customerType}</span>
+                          <span className="hidden sm:inline">&bull;</span>
+                          <span className="font-bold text-emerald-600 dark:text-emerald-400">Total Spent: ₹{viewCustomer.totalSpent}</span>
+                        </p>
                       </div>
                     </div>
                     <button onClick={() => setViewCustomer(null)} className="text-slate-400 hover:text-slate-500">
