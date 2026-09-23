@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Search, CheckCircle, IndianRupee, Loader2 } from 'lucide-react';
+import { Search, CheckCircle, IndianRupee, Loader2, ArrowLeft } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
@@ -55,7 +55,7 @@ export default function PickupClient({ initialBookings }: { initialBookings: any
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       
       {/* Left Column - Search & List */}
-      <div className="lg:col-span-1 space-y-4">
+      <div className={`lg:col-span-1 space-y-4 ${selectedBooking ? 'hidden lg:block' : 'block'}`}>
         <div className="relative">
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
             <Search className="h-5 w-5 text-slate-400" aria-hidden="true" />
@@ -100,12 +100,22 @@ export default function PickupClient({ initialBookings }: { initialBookings: any
       </div>
 
       {/* Right Column - Actions */}
-      <div className="lg:col-span-2">
+      <div className={`lg:col-span-2 ${!selectedBooking ? 'hidden lg:block' : 'block'}`}>
         {selectedBooking ? (
           <div className="bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-700 pb-4">
-              Booking Details
-            </h3>
+            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-4">
+              <div className="flex items-center">
+                <button 
+                  onClick={() => setSelectedBooking(null)} 
+                  className="mr-3 p-2 -ml-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 lg:hidden transition-colors"
+                >
+                  <ArrowLeft className="w-5 h-5" />
+                </button>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  Booking Details
+                </h3>
+              </div>
+            </div>
             
             <div className="mt-6 grid grid-cols-2 gap-6">
               <div>
