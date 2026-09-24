@@ -5,8 +5,6 @@ import { Plus, Receipt, Loader2, Trash2, Camera, ImageIcon, Eye, FileDown } from
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import imageCompression from 'browser-image-compression';
-import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
 
 export default function ExpensesClient({ initialExpenses, seasons }: { initialExpenses: any[], seasons: any[] }) {
   const router = useRouter();
@@ -139,39 +137,46 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
     }
   };
 
-  const exportPDF = () => {
-    const doc = new jsPDF();
-    doc.setFontSize(16);
-    doc.text('Expenses Report', 14, 20);
-    
-    const tableColumn = ["Date", "Category", "Season", "Description", "Amount (Rs)"];
-    const tableRows: any[] = [];
-    let totalAmount = 0;
+  const exportPDF = async () => {
+    try {
+      const { default: jsPDF } = await import('jspdf');
+      const { default: autoTable } = await import('jspdf-autotable');
+      
+      const doc = new jsPDF();
+      doc.setFontSize(16);
+      doc.text('Expenses Report', 14, 20);
+      
+      const tableColumn = ["Date", "Category", "Season", "Description", "Amount (Rs)"];
+      const tableRows: any[] = [];
+      let totalAmount = 0;
 
-    initialExpenses.forEach(exp => {
-      const expData = [
-        new Date(exp.expenseDate).toLocaleDateString(),
-        exp.category,
-        exp.season?.name || '-',
-        exp.description || '-',
-        exp.amount
-      ];
-      tableRows.push(expData);
-      totalAmount += parseFloat(exp.amount || '0');
-    });
+      initialExpenses.forEach(exp => {
+        const expData = [
+          new Date(exp.expenseDate).toLocaleDateString(),
+          exp.category,
+          exp.season?.name || '-',
+          exp.description || '-',
+          exp.amount
+        ];
+        tableRows.push(expData);
+        totalAmount += parseFloat(exp.amount || '0');
+      });
 
-    tableRows.push(['', '', '', 'Total Expenses', totalAmount.toFixed(2)]);
+      tableRows.push(['', '', '', 'Total Expenses', totalAmount.toFixed(2)]);
 
-    autoTable(doc, {
-      head: [tableColumn],
-      body: tableRows,
-      startY: 25,
-      theme: 'grid',
-      headStyles: { fillColor: [79, 70, 229] },
-      styles: { fontSize: 9 }
-    });
+      autoTable(doc, {
+        head: [tableColumn],
+        body: tableRows,
+        startY: 25,
+        theme: 'grid',
+        headStyles: { fillColor: [79, 70, 229] },
+        styles: { fontSize: 9 }
+      });
 
-    doc.save(`Expenses_Report_${new Date().toLocaleDateString().replace(/\//g, '-')}.pdf`);
+      doc.save(`Expenses_Report_${new Date().toLocaleDateString().replace(/\//g, '-')}.pdf`);
+    } catch (error) {
+      toast.error('Failed to generate PDF');
+    }
   };
 
   return (
