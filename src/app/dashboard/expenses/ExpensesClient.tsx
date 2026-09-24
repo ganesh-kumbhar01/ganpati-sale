@@ -159,7 +159,7 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
               <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Season</th>
               <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Amount</th>
               <th className="px-6 py-4 text-center text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Receipt</th>
-              <th className="px-6 py-4 text-right text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Actions</th>
+              <th className="px-6 py-4 text-center text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody className="bg-white dark:bg-slate-800 divide-y divide-slate-200 dark:divide-slate-700">
@@ -198,9 +198,9 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
                     <span className="text-xs text-slate-400">-</span>
                   )}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <div className="flex items-center justify-end" onClick={(e) => e.stopPropagation()}>
-                    <button onClick={() => handleDelete(exp.id)} className="text-slate-400 hover:text-rose-600 transition-colors p-2 rounded-full hover:bg-rose-50 dark:hover:bg-rose-900/20" title="Delete Expense">
+                <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                  <div className="flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+                    <button onClick={() => handleDelete(exp.id)} className="text-slate-400 hover:text-rose-600 transition-colors p-2 rounded-full hover:bg-rose-50 dark:hover:bg-rose-900/20 inline-flex" title="Delete Expense">
                       <Trash2 className="w-5 h-5" />
                     </button>
                   </div>
@@ -224,7 +224,7 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
           <div className="fixed inset-0 bg-slate-900/75 backdrop-blur-sm transition-opacity" onClick={() => setIsModalOpen(false)}></div>
           <div className="fixed inset-0 z-10 overflow-y-auto">
             <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <div className="relative transform overflow-hidden rounded-2xl bg-white dark:bg-slate-800 text-left shadow-xl transition-all w-full max-w-full sm:my-8 sm:w-full sm:max-w-lg border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto">
+              <div className="relative transform overflow-hidden rounded-2xl bg-white dark:bg-slate-800 text-left shadow-xl transition-all w-full max-w-full sm:my-8 sm:w-full sm:max-w-lg border border-slate-200 dark:border-slate-700 max-h-[85vh] overflow-y-auto">
                 <form onSubmit={handleSubmit}>
                   <div className="px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                     <div className="flex justify-between items-center mb-4">
@@ -301,11 +301,11 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
                       </div>
                     </div>
                   </div>
-                  <div className="bg-slate-50 dark:bg-slate-900/50 px-4 py-4 sm:flex sm:flex-row-reverse sm:px-6 border-t border-slate-200 dark:border-slate-700 pb-24 sm:pb-4">
+                  <div className="bg-slate-50 dark:bg-slate-900/50 px-4 py-4 sm:flex sm:flex-row-reverse sm:px-6 border-t border-slate-200 dark:border-slate-700 pb-10 sm:pb-4">
                     <button type="submit" disabled={loading} className="inline-flex w-full justify-center rounded-lg border border-transparent bg-indigo-600 px-4 py-3 sm:py-2 text-base font-bold text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm disabled:opacity-50">
                       {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : isEditMode ? 'Save Changes' : 'Save Expense'}
                     </button>
-                    <button type="button" onClick={() => setIsModalOpen(false)} className="mt-3 inline-flex w-full justify-center rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-3 sm:py-2 text-base font-bold text-slate-700 dark:text-slate-300 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm">
+                    <button type="button" onClick={() => setIsModalOpen(false)} className="mt-3 sm:mt-0 inline-flex w-full justify-center rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-3 sm:py-2 text-base font-bold text-slate-700 dark:text-slate-300 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto sm:text-sm">
                       Cancel
                     </button>
                   </div>
