@@ -35,12 +35,3 @@ svg:active {
   outline: none !important;
   -webkit-tap-highlight-color: transparent;
 }
-
-/* Smooth scrolling enhancements */
-html {
-  scroll-behavior: smooth;
-}
-.overflow-y-auto, .overflow-x-auto {
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-}
