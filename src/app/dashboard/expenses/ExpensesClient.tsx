@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Plus, Receipt, Loader2, Trash2, Camera, ImageIcon, Eye } from 'lucide-react';
+import { Plus, Receipt, Loader2, Trash2, Camera, ImageIcon, Eye, FileDown } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import imageCompression from 'browser-image-compression';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 export default function ExpensesClient({ initialExpenses, seasons }: { initialExpenses: any[], seasons: any[] }) {
   const router = useRouter();
@@ -132,21 +134,62 @@ export default function ExpensesClient({ initialExpenses, seasons }: { initialEx
       const res = await fetch(`/api/expenses/${id}`, { method: 'DELETE' });
       if (!res.ok) throw new Error('Failed to delete expense');
       toast.success('Expense deleted');
-      router.refresh();
     } catch (err: any) {
       toast.error(err.message);
     }
   };
 
+  const exportPDF = () => {
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text('Expenses Report', 14, 20);
+    
+    const tableColumn = ["Date", "Category", "Season", "Description", "Amount (Rs)"];
+    const tableRows: any[] = [];
+    let totalAmount = 0;
+
+    initialExpenses.forEach(exp => {
+      const expData = [
+        new Date(exp.expenseDate).toLocaleDateString(),
+        exp.category,
+        exp.season?.name || '-',
+        exp.description || '-',
+        exp.amount
+      ];
+      tableRows.push(expData);
+      totalAmount += parseFloat(exp.amount || '0');
+    });
+
+    tableRows.push(['', '', '', 'Total Expenses', totalAmount.toFixed(2)]);
+
+    autoTable(doc, {
+      head: [tableColumn],
+      body: tableRows,
+      startY: 25,
+      theme: 'grid',
+      headStyles: { fillColor: [79, 70, 229] },
+      styles: { fontSize: 9 }
+    });
+
+    doc.save(`Expenses_Report_${new Date().toLocaleDateString().replace(/\//g, '-')}.pdf`);
+  };
+
   return (
     <div>
-      <div className="mb-6">
+      <div className="mb-6 flex flex-wrap gap-3">
         <button
           onClick={openNewModal}
           className="inline-flex items-center justify-center rounded-lg border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
         >
           <Plus className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
           Record Expense
+        </button>
+        <button
+          onClick={exportPDF}
+          className="inline-flex items-center justify-center rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+        >
+          <FileDown className="-ml-1 mr-2 h-5 w-5 text-slate-500 dark:text-slate-400" aria-hidden="true" />
+          Download PDF
         </button>
       </div>
 
