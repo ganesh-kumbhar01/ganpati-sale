@@ -7,7 +7,7 @@ import { Loader2, Mail, Lock, User, Phone, Briefcase } from 'lucide-react';
 
 export default function AuthPage() {
   return (
-    <Suspense fallback={<div className="flex justify-center p-8"><Loader2 className="animate-spin w-8 h-8 text-indigo-600" /></div>}>
+    <Suspense fallback={<div className="flex justify-center p-8"><Loader2 className="animate-spin w-8 h-8 text-blue-600" /></div>}>
       <AuthForm />
     </Suspense>
   );
@@ -71,14 +71,14 @@ function AuthForm() {
         <button
           type="button"
           onClick={() => setIsLogin(true)}
-          className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${isLogin ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+          className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${isLogin ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
         >
           Sign In
         </button>
         <button
           type="button"
           onClick={() => setIsLogin(false)}
-          className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${!isLogin ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+          className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${!isLogin ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
         >
           Sign Up
         </button>
@@ -93,7 +93,7 @@ function AuthForm() {
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Briefcase className="h-4 w-4 text-slate-400" />
                 </div>
-                <input name="businessName" type="text" required={!isLogin} value={formData.businessName} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="e.g. Ganpati Murti Kendra" />
+                <input name="businessName" type="text" required={!isLogin} value={formData.businessName} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="e.g. Ganpati Murti Kendra" />
               </div>
             </div>
             <div>
@@ -102,7 +102,7 @@ function AuthForm() {
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <User className="h-4 w-4 text-slate-400" />
                 </div>
-                <input name="ownerName" type="text" required={!isLogin} value={formData.ownerName} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="Your full name" />
+                <input name="ownerName" type="text" required={!isLogin} value={formData.ownerName} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="Your full name" />
               </div>
             </div>
             <div>
@@ -111,7 +111,7 @@ function AuthForm() {
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Phone className="h-4 w-4 text-slate-400" />
                 </div>
-                <input name="mobile" type="tel" required={!isLogin} value={formData.mobile} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="10-digit mobile number" />
+                <input name="mobile" type="tel" required={!isLogin} value={formData.mobile} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="10-digit mobile number" />
               </div>
             </div>
           </>
@@ -123,7 +123,7 @@ function AuthForm() {
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <Mail className="h-4 w-4 text-slate-400" />
             </div>
-            <input name="email" type="email" required value={formData.email} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="you@example.com" />
+            <input name="email" type="email" required value={formData.email} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="you@example.com" />
           </div>
         </div>
 
@@ -133,12 +133,12 @@ function AuthForm() {
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <Lock className="h-4 w-4 text-slate-400" />
             </div>
-            <input name="password" type="password" required value={formData.password} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="••••••••" />
+            <input name="password" type="password" required value={formData.password} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="••••••••" />
           </div>
         </div>
 
         <div className="pt-2">
-          <button type="submit" disabled={loading} className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform active:scale-[0.98]">
+          <button type="submit" disabled={loading} className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform active:scale-[0.98]">
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (isLogin ? 'Sign In to Dashboard' : 'Create Free Account')}
           </button>
         </div>
