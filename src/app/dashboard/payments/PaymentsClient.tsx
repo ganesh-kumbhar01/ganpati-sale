@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { IndianRupee, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 export default function PaymentsClient({ initialPayments }: { initialPayments: any[] }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -30,11 +30,11 @@ export default function PaymentsClient({ initialPayments }: { initialPayments: a
         <table className="min-w-full divide-y divide-slate-200 dark:divide-slate-700">
           <thead className="bg-slate-50 dark:bg-slate-900/50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Date & Time</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Customer Info</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Product</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Payment Type</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Amount</th>
+              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Date & Time</th>
+              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Customer Info</th>
+              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Product</th>
+              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Payment Type</th>
+              <th className="px-6 py-4 text-left text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider">Amount</th>
             </tr>
           </thead>
           <tbody className="bg-white dark:bg-slate-800 divide-y divide-slate-200 dark:divide-slate-700">
@@ -50,10 +50,7 @@ export default function PaymentsClient({ initialPayments }: { initialPayments: a
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
-                    <div className="flex-shrink-0 h-10 w-10 bg-indigo-50 dark:bg-indigo-900/20 rounded-full flex items-center justify-center">
-                      <IndianRupee className="h-5 w-5 text-indigo-500" />
-                    </div>
-                    <div className="ml-4">
+                    <div className="ml-0">
                       <div className="text-sm font-medium text-slate-900 dark:text-white">{payment.booking?.customer?.name}</div>
                       <div className="text-xs text-slate-500">{payment.booking?.customer?.mobile}</div>
                     </div>
@@ -68,7 +65,7 @@ export default function PaymentsClient({ initialPayments }: { initialPayments: a
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-emerald-600 dark:text-emerald-400">
-                  ₹{payment.amount}
+                  {payment.amount}
                 </td>
               </tr>
             ))}
