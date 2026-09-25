@@ -32,7 +32,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md overflow-hidden p-0.5 border border-slate-200 dark:border-slate-700">
             <img src="/new-logo.jpg" alt="Ganpati Logo" className="w-full h-full object-cover rounded-full mix-blend-multiply dark:mix-blend-normal transform scale-110" />
           </div>
-          <span className="text-2xl font-extrabold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent tracking-tight">Ganpati</span>
+          <span className="text-2xl font-extrabold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent tracking-tight">Ekdant</span>
         </div>
         <div className="flex flex-1 flex-col overflow-y-auto">
           <nav className="flex-1 space-y-1 px-4 py-4">
@@ -70,7 +70,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <div className="flex-shrink-0 w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-sm overflow-hidden p-0.5 border border-slate-200 dark:border-slate-700">
               <img src="/new-logo.jpg" alt="Ganpati Logo" className="w-full h-full object-cover rounded-full mix-blend-multiply dark:mix-blend-normal transform scale-110" />
             </div>
-            <div className="text-lg font-extrabold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent tracking-tight hidden sm:block">Ganpati</div>
+            <div className="text-lg font-extrabold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent tracking-tight hidden sm:block">Ekdant</div>
           </div>
           
           <div className="flex flex-1 items-center justify-end md:justify-between w-full">

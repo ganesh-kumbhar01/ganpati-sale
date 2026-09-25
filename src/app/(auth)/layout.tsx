@@ -12,7 +12,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           <img src="/new-logo.jpg" alt="Ganpati Logo" className="w-full h-full object-cover rounded-full mix-blend-multiply dark:mix-blend-normal transform scale-110" />
         </div>
         <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-          Ganpati
+          Ekdant
         </h2>
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 font-medium">
           Reseller Business Management

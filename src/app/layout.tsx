@@ -16,7 +16,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Vighnharta - Reseller Manager",
+  title: "Ekdant - Reseller Manager",
   description: "Manage your Ganpati inventory, bookings, and sales.",
 };
 
