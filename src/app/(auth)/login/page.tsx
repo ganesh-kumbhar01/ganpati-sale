@@ -16,7 +16,7 @@ export default function AuthPage() {
 function AuthForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [isLogin, setIsLogin] = useState(true);
+  const isLogin = true;
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
@@ -67,55 +67,8 @@ function AuthForm() {
 
   return (
     <div className="w-full">
-      <div className="flex bg-slate-100 dark:bg-slate-900 p-1 rounded-xl mb-8">
-        <button
-          type="button"
-          onClick={() => setIsLogin(true)}
-          className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${isLogin ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-        >
-          Sign In
-        </button>
-        <button
-          type="button"
-          onClick={() => setIsLogin(false)}
-          className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${!isLogin ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-        >
-          Sign Up
-        </button>
-      </div>
-
       <form className="space-y-4" onSubmit={handleSubmit}>
-        {!isLogin && (
-          <>
-            <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-1">Business Name</label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Briefcase className="h-4 w-4 text-slate-400" />
-                </div>
-                <input name="businessName" type="text" required={!isLogin} value={formData.businessName} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="e.g. Ganpati Murti Kendra" />
-              </div>
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-1">Owner Name</label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="h-4 w-4 text-slate-400" />
-                </div>
-                <input name="ownerName" type="text" required={!isLogin} value={formData.ownerName} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="Your full name" />
-              </div>
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-1">Mobile Number</label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Phone className="h-4 w-4 text-slate-400" />
-                </div>
-                <input name="mobile" type="tel" required={!isLogin} value={formData.mobile} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="10-digit mobile number" />
-              </div>
-            </div>
-          </>
-        )}
+        
 
         <div>
           <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-1">Email address</label>
@@ -139,7 +92,7 @@ function AuthForm() {
 
         <div className="pt-2">
           <button type="submit" disabled={loading} className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform active:scale-[0.98]">
-            {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (isLogin ? 'Sign In to Dashboard' : 'Create Free Account')}
+            {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Sign In to Dashboard"}
           </button>
         </div>
       </form>

@@ -13,6 +13,8 @@ const registerSchema = z.object({
 });
 
 export async function POST(req: Request) {
+  return NextResponse.json({ error: 'Registration is disabled for this season. Please contact the administrator.' }, { status: 403 });
+
   try {
     const body = await req.json();
     const { email, password, ownerName, businessName, mobile } = registerSchema.parse(body);
