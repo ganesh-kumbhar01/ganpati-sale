@@ -8,8 +8,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-[40rem] h-[40rem] bg-sky-300/20 rounded-full blur-3xl"></div>
       
       <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10 text-center">
-        <div className="inline-flex items-center justify-center bg-white dark:bg-slate-800 w-28 h-28 rounded-full mb-4 shadow-xl overflow-hidden p-1 border-2 border-blue-100 dark:border-blue-900/50">
-          <img src="/new-logo.jpg" alt="Ganpati Logo" className="w-full h-full object-cover rounded-full mix-blend-multiply dark:mix-blend-normal transform scale-110" />
+        <div className="inline-flex items-center justify-center w-28 h-28 rounded-full mb-4 overflow-hidden mix-blend-multiply dark:mix-blend-screen">
+          <img src="/new-logo.jpg" alt="Ekdant Logo" className="w-full h-full object-cover scale-[1.35]" />
         </div>
         <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           Ekdant
