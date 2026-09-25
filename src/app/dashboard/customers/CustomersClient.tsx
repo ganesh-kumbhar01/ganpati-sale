@@ -130,8 +130,8 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
 
   return (
     <div>
-      <div className="mb-6 flex justify-between items-center flex-wrap gap-4">
-        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto flex-1 max-w-2xl">
+      <div className="mb-6 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4">
+        <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto flex-1 max-w-2xl">
           <div className="relative flex-1">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <Search className="h-5 w-5 text-slate-400" aria-hidden="true" />
@@ -155,7 +155,7 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
         </div>
 
         {selectedIds.length > 0 && (
-          <div className="flex items-center gap-4 bg-white dark:bg-slate-800 px-4 py-2 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">
+          <div className="flex items-center justify-between sm:justify-start gap-4 bg-white dark:bg-slate-800 px-4 py-2 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 w-full lg:w-auto">
             <span className="text-sm font-medium text-slate-700 dark:text-slate-300 mr-2">{selectedIds.length} selected</span>
             
             <button onClick={handleExportCSV} className="inline-flex items-center text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-indigo-600">
