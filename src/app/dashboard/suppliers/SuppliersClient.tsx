@@ -132,7 +132,7 @@ export default function SuppliersClient({ initialSuppliers }: { initialSuppliers
                       </div>
                     </div>
                   </div>
-                  <div className="bg-slate-50 dark:bg-slate-900/50 px-4 py-4 sm:flex sm:flex-row-reverse sm:px-6 border-t border-slate-200 dark:border-slate-700 pb-8 sm:pb-4 sticky bottom-0 z-10 rounded-b-2xl">
+                  <div className="bg-slate-50 dark:bg-slate-900/50 px-4 py-4 sm:flex sm:flex-row-reverse sm:px-6 border-t border-slate-200 dark:border-slate-700 pb-20 sm:pb-4 sticky bottom-0 z-10 rounded-b-2xl">
                     <button type="submit" disabled={loading} className="inline-flex w-full justify-center rounded-lg border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm disabled:opacity-50">
                       {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Save Supplier'}
                     </button>
