@@ -29,10 +29,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Sidebar */}
       <div className="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 hidden md:flex md:flex-col">
         <div className="flex h-16 shrink-0 items-center px-6 border-b border-slate-200 dark:border-slate-800 gap-3">
-          <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white flex items-center justify-center overflow-hidden border border-slate-200 shadow-sm">
-            <img src="/bappa-logo.jpg" alt="Vighnharta" className="w-full h-full object-cover" />
+          <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-rose-600 flex items-center justify-center shadow-lg shadow-orange-500/30 border border-orange-400/50">
+            <span className="text-white font-black text-xl leading-none font-sans drop-shadow-md">V</span>
           </div>
-          <span className="text-xl font-bold text-indigo-600 dark:text-indigo-400">Vighnharta</span>
+          <span className="text-2xl font-extrabold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent tracking-tight">Vighnharta</span>
         </div>
         <div className="flex flex-1 flex-col overflow-y-auto">
           <nav className="flex-1 space-y-1 px-4 py-4">
@@ -66,11 +66,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <div className="flex flex-1 flex-col overflow-hidden">
         {/* Persistent Top Header */}
         <header className="sticky top-0 z-10 flex h-16 flex-shrink-0 items-center justify-between gap-x-2 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur px-3 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-x-2 md:hidden">
-            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white flex items-center justify-center overflow-hidden border border-slate-200 shadow-sm">
-              <img src="/bappa-logo.jpg" alt="Vighnharta" className="w-full h-full object-cover" />
+          <div className="flex items-center gap-x-2.5 md:hidden">
+            <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-rose-600 flex items-center justify-center shadow-lg shadow-orange-500/30 border border-orange-400/50">
+              <span className="text-white font-black text-xl leading-none font-sans drop-shadow-md">V</span>
             </div>
-            <div className="font-bold text-indigo-600 dark:text-indigo-400 hidden sm:block">Ganpati Reseller</div>
+            <div className="text-lg font-extrabold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent tracking-tight hidden sm:block">Vighnharta</div>
           </div>
           
           <div className="flex flex-1 items-center justify-end md:justify-between w-full">
