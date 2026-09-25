@@ -48,10 +48,12 @@ export function DashboardCharts({ trendData, stockSummary }: { trendData: any[],
         <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1">Booking & Revenue Trend</h3>
         <p className="text-xs text-slate-500 mb-6">Daily sales volume</p>
         <div className="h-48 w-full" style={{ WebkitTapHighlightColor: 'transparent', outline: 'none' }}>
-          <ResponsiveContainer width="100%" height="100%" className="focus:outline-none">
+          <ResponsiveContainer width="100%" height="100%" className="focus:outline-none" style={{ outline: 'none' }}>
             <AreaChart
               data={trendData}
               margin={{ top: 0, right: 0, left: -20, bottom: 0 }}
+              style={{ outline: 'none' }}
+              className="focus:outline-none"
             >
               <defs>
                 <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
