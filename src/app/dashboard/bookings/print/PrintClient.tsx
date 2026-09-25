@@ -69,7 +69,7 @@ export default function PrintClient({ bookings }: { bookings: any[] }) {
                 </td>
                 <td className="py-4 text-center text-slate-800">{booking.product.material}</td>
                 <td className="py-4 text-center text-slate-800">{booking.quantity}</td>
-                <td className="py-4 text-right font-semibold text-slate-900">Rs. {booking.totalPrice}</td>
+                <td className="py-4 text-right font-semibold text-slate-900">₹{booking.totalPrice}</td>
               </tr>
             </tbody>
           </table>
@@ -78,15 +78,15 @@ export default function PrintClient({ bookings }: { bookings: any[] }) {
             <div className="w-64 space-y-3">
               <div className="flex justify-between text-slate-600">
                 <span>Total Amount:</span>
-                <span className="font-semibold text-slate-900">Rs. {booking.totalPrice}</span>
+                <span className="font-semibold text-slate-900">₹{booking.totalPrice}</span>
               </div>
               <div className="flex justify-between text-slate-600">
                 <span>Advance Paid:</span>
-                <span className="font-semibold text-emerald-600">Rs. {booking.advanceAmount}</span>
+                <span className="font-semibold text-emerald-600">₹{booking.advanceAmount}</span>
               </div>
               <div className="flex justify-between border-t border-slate-200 pt-3 text-lg">
                 <span className="font-bold text-slate-900">Balance Due:</span>
-                <span className="font-bold text-rose-600">Rs. {booking.balanceAmount}</span>
+                <span className="font-bold text-rose-600">₹{booking.balanceAmount}</span>
               </div>
             </div>
           </div>

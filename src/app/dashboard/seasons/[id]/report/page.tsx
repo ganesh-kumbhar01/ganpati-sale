@@ -94,20 +94,20 @@ export default async function SeasonReportPage({ params }: { params: { id: strin
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700 print:border-slate-300">
                   <span className="text-slate-600 dark:text-slate-400 print:text-slate-700">Total Sales (Revenue)</span>
-                  <span className="font-semibold text-slate-900 dark:text-white print:text-black">Rs. {totalRevenue.toLocaleString('en-IN')}</span>
+                  <span className="font-semibold text-slate-900 dark:text-white print:text-black">₹{totalRevenue.toLocaleString('en-IN')}</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700 print:border-slate-300">
                   <span className="text-slate-600 dark:text-slate-400 print:text-slate-700">Inventory Cost</span>
-                  <span className="font-semibold text-rose-600 dark:text-rose-400 print:text-rose-600">- Rs. {totalInventoryCost.toLocaleString('en-IN')}</span>
+                  <span className="font-semibold text-rose-600 dark:text-rose-400 print:text-rose-600">- ₹{totalInventoryCost.toLocaleString('en-IN')}</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700 print:border-slate-300">
                   <span className="text-slate-600 dark:text-slate-400 print:text-slate-700">Operational Expenses</span>
-                  <span className="font-semibold text-rose-600 dark:text-rose-400 print:text-rose-600">- Rs. {totalExpenses.toLocaleString('en-IN')}</span>
+                  <span className="font-semibold text-rose-600 dark:text-rose-400 print:text-rose-600">- ₹{totalExpenses.toLocaleString('en-IN')}</span>
                 </div>
                 <div className="flex justify-between items-center pt-2">
                   <span className="text-lg font-bold text-slate-900 dark:text-white print:text-black">Net Profit</span>
                   <span className={`text-xl font-bold ${netProfit >= 0 ? 'text-emerald-600 dark:text-emerald-400 print:text-emerald-600' : 'text-rose-600 dark:text-rose-400 print:text-rose-600'}`}>
-                    Rs. {netProfit.toLocaleString('en-IN')}
+                    ₹{netProfit.toLocaleString('en-IN')}
                   </span>
                 </div>
               </div>
@@ -121,11 +121,11 @@ export default async function SeasonReportPage({ params }: { params: { id: strin
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700 print:border-slate-300">
                   <span className="text-slate-600 dark:text-slate-400 print:text-slate-700">Amount Collected</span>
-                  <span className="font-semibold text-emerald-600 dark:text-emerald-400 print:text-emerald-600">Rs. {totalCollected.toLocaleString('en-IN')}</span>
+                  <span className="font-semibold text-emerald-600 dark:text-emerald-400 print:text-emerald-600">₹{totalCollected.toLocaleString('en-IN')}</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700 print:border-slate-300">
                   <span className="text-slate-600 dark:text-slate-400 print:text-slate-700">Pending to Collect</span>
-                  <span className="font-semibold text-amber-600 dark:text-amber-400 print:text-amber-600">Rs. {totalPending.toLocaleString('en-IN')}</span>
+                  <span className="font-semibold text-amber-600 dark:text-amber-400 print:text-amber-600">₹{totalPending.toLocaleString('en-IN')}</span>
                 </div>
                 <div className="flex justify-between items-center pt-2">
                   <span className="text-slate-900 dark:text-white print:text-black font-medium text-sm">Collection Rate</span>
@@ -186,12 +186,12 @@ export default async function SeasonReportPage({ params }: { params: { id: strin
                   {expenseChartData.map(([category, amount]) => (
                     <div key={category} className="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700 print:bg-slate-50 print:border-slate-200" style={{ WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}>
                       <span className="font-medium text-slate-700 dark:text-slate-300 print:text-slate-800">{category}</span>
-                      <span className="font-bold text-slate-900 dark:text-white print:text-black">Rs. {amount.toLocaleString('en-IN')}</span>
+                      <span className="font-bold text-slate-900 dark:text-white print:text-black">₹{amount.toLocaleString('en-IN')}</span>
                     </div>
                   ))}
                   <div className="flex justify-between items-center p-3 font-bold text-rose-600 dark:text-rose-400 print:text-rose-600">
                     <span>Total Expenses</span>
-                    <span>Rs. {totalExpenses.toLocaleString('en-IN')}</span>
+                    <span>₹{totalExpenses.toLocaleString('en-IN')}</span>
                   </div>
                 </div>
               ) : (

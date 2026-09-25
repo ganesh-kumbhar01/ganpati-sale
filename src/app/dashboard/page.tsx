@@ -171,7 +171,7 @@ export default async function DashboardPage() {
               <IndianRupee className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-600 dark:text-emerald-400" />
             </div>
           </div>
-          <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Rs. {totalRevenue.toLocaleString()}</p>
+          <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">₹{totalRevenue.toLocaleString()}</p>
         </div>
 
         <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col justify-between">
@@ -181,7 +181,7 @@ export default async function DashboardPage() {
               <Package className="w-3 h-3 sm:w-4 sm:h-4 text-rose-600 dark:text-rose-400" />
             </div>
           </div>
-          <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Rs. {totalStockCost.toLocaleString()}</p>
+          <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">₹{totalStockCost.toLocaleString()}</p>
         </div>
 
         <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col justify-between">
@@ -191,7 +191,7 @@ export default async function DashboardPage() {
               <Wallet className="w-3 h-3 sm:w-4 sm:h-4 text-amber-600 dark:text-amber-400" />
             </div>
           </div>
-          <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Rs. {totalCost.toLocaleString()}</p>
+          <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">₹{totalCost.toLocaleString()}</p>
         </div>
 
         <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col justify-between">
@@ -310,7 +310,7 @@ export default async function DashboardPage() {
                       {/* Mobile Only Action & Pending */}
                       <div className="flex flex-col items-center justify-center sm:hidden w-28">
                         <span className="text-[11px] font-extrabold text-[#FF4C4C] mb-1">
-                          Rs. {b.balanceAmount}
+                          ₹{b.balanceAmount}
                         </span>
                         <Link href="/dashboard/pickup" className="w-full text-center inline-flex items-center justify-center rounded-md bg-indigo-50 px-2 py-1.5 text-[10px] font-bold text-indigo-700 ring-1 ring-inset ring-indigo-600/20">
                           Pending Delivery
@@ -324,7 +324,7 @@ export default async function DashboardPage() {
                     </div>
                     <div className="hidden sm:block text-right">
                       <span className="text-[11px] font-bold text-[#FF4C4C]">
-                        Rs. {b.balanceAmount}
+                        ₹{b.balanceAmount}
                       </span>
                     </div>
                   </div>

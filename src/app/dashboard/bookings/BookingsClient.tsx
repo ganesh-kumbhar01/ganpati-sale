@@ -173,7 +173,7 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
 
         // Automatically open WhatsApp with confirmed booking message
         const selectedProd = products.find(p => p.id === formData.productId);
-        const text = `à¤¨à¤®à¤¸à¥à¤•à¤¾à¤° ${formData.customerName} à¤œà¥€!\n\nà¤—à¤£à¤ªà¤¤à¤¿ à¤¬à¤¾à¤ªà¥à¤ªà¤¾ à¤®à¥‹à¤°à¤¯à¤¾! ðŸ™\nà¤†à¤ªà¤•à¥€ à¤¬à¥à¤•à¤¿à¤‚à¤— à¤•à¤¨à¥à¤«à¤°à¥à¤® à¤¹à¥‹ à¤—à¤ˆ à¤¹à¥ˆà¥¤\n\nðŸ“Œ à¤®à¥‚à¤°à¥à¤¤à¤¿: ${selectedProd?.name || ''} (Qty: ${payload.quantity})\nðŸ’° à¤•à¥à¤² à¤•à¥€à¤®à¤¤: Rs. ${payload.totalPrice}\nâœ… à¤œà¤®à¤¾ (Advance): Rs. ${payload.advanceAmount}\nâ— à¤¬à¤¾à¤•à¥€ (Balance): Rs. ${payload.totalPrice - payload.advanceAmount}\n\nà¤§à¤¨à¥à¤¯à¤µà¤¾à¤¦!`;
+        const text = `à¤¨à¤®à¤¸à¥à¤•à¤¾à¤° ${formData.customerName} à¤œà¥€!\n\nà¤—à¤£à¤ªà¤¤à¤¿ à¤¬à¤¾à¤ªà¥à¤ªà¤¾ à¤®à¥‹à¤°à¤¯à¤¾! ðŸ™\nà¤†à¤ªà¤•à¥€ à¤¬à¥à¤•à¤¿à¤‚à¤— à¤•à¤¨à¥à¤«à¤°à¥à¤® à¤¹à¥‹ à¤—à¤ˆ à¤¹à¥ˆà¥¤\n\nðŸ“Œ à¤®à¥‚à¤°à¥à¤¤à¤¿: ${selectedProd?.name || ''} (Qty: ${payload.quantity})\nðŸ’° à¤•à¥à¤² à¤•à¥€à¤®à¤¤: ₹${payload.totalPrice}\nâœ… à¤œà¤®à¤¾ (Advance): ₹${payload.advanceAmount}\nâ— à¤¬à¤¾à¤•à¥€ (Balance): ₹${payload.totalPrice - payload.advanceAmount}\n\nà¤§à¤¨à¥à¤¯à¤µà¤¾à¤¦!`;
         const mobile = formData.customerMobile.replace(/\D/g,'');
         const url = `https://wa.me/91${mobile}?text=${encodeURIComponent(text)}`;
         
@@ -235,7 +235,7 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
   };
 
   const handleSendWhatsApp = (booking: any) => {
-    const text = `à¤¨à¤®à¤¸à¥à¤•à¤¾à¤° ${booking.customer?.name} à¤œà¥€!\n\nà¤—à¤£à¤ªà¤¤à¤¿ à¤¬à¤¾à¤ªà¥à¤ªà¤¾ à¤®à¥‹à¤°à¤¯à¤¾! ðŸ™\nà¤†à¤ªà¤•à¥€ à¤¬à¥à¤•à¤¿à¤‚à¤— à¤•à¤¨à¥à¤«à¤°à¥à¤® à¤¹à¥‹ à¤—à¤ˆ à¤¹à¥ˆà¥¤\n\nðŸ“Œ à¤®à¥‚à¤°à¥à¤¤à¤¿: ${booking.product?.name} (Qty: ${booking.quantity})\nðŸ’° à¤•à¥à¤² à¤•à¥€à¤®à¤¤: Rs. ${booking.totalPrice}\nâœ… à¤œà¤®à¤¾ (Advance): Rs. ${booking.advanceAmount}\nâ— à¤¬à¤¾à¤•à¥€ (Balance): Rs. ${booking.balanceAmount}\n\nà¤§à¤¨à¥à¤¯à¤µà¤¾à¤¦!`;
+    const text = `à¤¨à¤®à¤¸à¥à¤•à¤¾à¤° ${booking.customer?.name} à¤œà¥€!\n\nà¤—à¤£à¤ªà¤¤à¤¿ à¤¬à¤¾à¤ªà¥à¤ªà¤¾ à¤®à¥‹à¤°à¤¯à¤¾! ðŸ™\nà¤†à¤ªà¤•à¥€ à¤¬à¥à¤•à¤¿à¤‚à¤— à¤•à¤¨à¥à¤«à¤°à¥à¤® à¤¹à¥‹ à¤—à¤ˆ à¤¹à¥ˆà¥¤\n\nðŸ“Œ à¤®à¥‚à¤°à¥à¤¤à¤¿: ${booking.product?.name} (Qty: ${booking.quantity})\nðŸ’° à¤•à¥à¤² à¤•à¥€à¤®à¤¤: ₹${booking.totalPrice}\nâœ… à¤œà¤®à¤¾ (Advance): ₹${booking.advanceAmount}\nâ— à¤¬à¤¾à¤•à¥€ (Balance): ₹${booking.balanceAmount}\n\nà¤§à¤¨à¥à¤¯à¤µà¤¾à¤¦!`;
     const mobile = booking.customer?.mobile.replace(/\D/g,'');
     const url = `https://wa.me/91${mobile}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
@@ -364,9 +364,9 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                   <div className="text-sm text-slate-500 dark:text-slate-400">Qty: {booking.quantity}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm">
-                  <span className="text-slate-900 dark:text-white font-medium">Total: Rs. {booking.totalPrice}</span>
+                  <span className="text-slate-900 dark:text-white font-medium">Total: ₹{booking.totalPrice}</span>
                   <br />
-                  <span className="text-rose-600 dark:text-rose-400 font-medium text-xs">Pending: Rs. {booking.balanceAmount}</span>
+                  <span className="text-rose-600 dark:text-rose-400 font-medium text-xs">Pending: ₹{booking.balanceAmount}</span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
@@ -491,7 +491,7 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                                       <p className="text-[10px] text-slate-500">{p.size || '-'} â€¢ {p.material}</p>
                                     </div>
                                     <div className="mt-2 flex justify-between items-end">
-                                      <span className="text-xs font-bold text-emerald-600">Rs. {p.sellingPrice}</span>
+                                      <span className="text-xs font-bold text-emerald-600">₹{p.sellingPrice}</span>
                                       <span className={`text-[10px] font-semibold ${p.qtyAvailable < 5 ? 'text-rose-500' : 'text-slate-500'}`}>{p.qtyAvailable} left</span>
                                     </div>
                                   </div>
@@ -539,12 +539,12 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">{isDirectSale ? 'Price Paid (Rs. )' : 'Total Price (Rs. )'}</label>
+                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">{isDirectSale ? 'Price Paid (₹)' : 'Total Price (₹)'}</label>
                         <input required type="number" step="0.01" name="totalPrice" placeholder="e.g. 5000" value={formData.totalPrice} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border font-bold placeholder-slate-300 dark:placeholder-slate-500" />
                       </div>
                       {!isDirectSale && (
                         <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Advance Amount Paid (Rs. )</label>
+                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Advance Amount Paid (₹)</label>
                           <input required type="number" step="0.01" min="0" name="advanceAmount" placeholder="e.g. 2000" value={formData.advanceAmount} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-emerald-50 dark:bg-slate-900 text-emerald-700 dark:text-emerald-400 px-3 py-2 border font-bold placeholder-emerald-200 dark:placeholder-emerald-800/50" />
                         </div>
                       )}
@@ -600,12 +600,12 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                   <div className="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-4 mb-4 flex justify-between items-center">
                     <div>
                       <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Financials</h4>
-                      <p className="text-sm text-slate-900 dark:text-white">Total: <span className="font-semibold">Rs. {viewBooking.totalPrice}</span></p>
-                      <p className="text-sm text-emerald-600 dark:text-emerald-400">Advance: <span className="font-semibold">Rs. {viewBooking.advanceAmount}</span></p>
+                      <p className="text-sm text-slate-900 dark:text-white">Total: <span className="font-semibold">₹{viewBooking.totalPrice}</span></p>
+                      <p className="text-sm text-emerald-600 dark:text-emerald-400">Advance: <span className="font-semibold">₹{viewBooking.advanceAmount}</span></p>
                     </div>
                     <div className="text-right">
                       <p className="text-xs font-bold text-rose-500 uppercase tracking-wider mb-1">Balance Due</p>
-                      <p className="text-2xl font-bold text-rose-600 dark:text-rose-400">Rs. {viewBooking.balanceAmount}</p>
+                      <p className="text-2xl font-bold text-rose-600 dark:text-rose-400">₹{viewBooking.balanceAmount}</p>
                     </div>
                   </div>
 

@@ -68,7 +68,7 @@ export function DashboardCharts({ trendData, stockSummary }: { trendData: any[],
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
               <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
               
-              <YAxis yAxisId="left" orientation="left" tickFormatter={(val) => `Rs. ${val}`} tick={{ fontSize: 10, fill: '#5340FF' }} axisLine={false} tickLine={false} />
+              <YAxis yAxisId="left" orientation="left" tickFormatter={(val) => `₹${val}`} tick={{ fontSize: 10, fill: '#5340FF' }} axisLine={false} tickLine={false} />
               <YAxis yAxisId="right" orientation="right" tickFormatter={(val) => `Qty ${val}`} allowDecimals={false} tick={{ fontSize: 10, fill: '#00D48D' }} axisLine={false} tickLine={false} />
               
               <Tooltip 
@@ -76,7 +76,7 @@ export function DashboardCharts({ trendData, stockSummary }: { trendData: any[],
                 contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)', fontSize: '12px', outline: 'none' }} 
               />
               
-              <Area yAxisId="left" type="natural" dataKey="revenue" name="Revenue (Rs. )" stroke="#5340FF" strokeWidth={3} fillOpacity={1} fill="url(#colorRevenue)" activeDot={{ r: 5, strokeWidth: 0 }} />
+              <Area yAxisId="left" type="natural" dataKey="revenue" name="Revenue (₹)" stroke="#5340FF" strokeWidth={3} fillOpacity={1} fill="url(#colorRevenue)" activeDot={{ r: 5, strokeWidth: 0 }} />
               <Area yAxisId="right" type="natural" dataKey="bookings" name="Bookings (Qty)" stroke="#00D48D" strokeWidth={3} fillOpacity={1} fill="url(#colorBookings)" activeDot={{ r: 5, strokeWidth: 0 }} />
             </AreaChart>
           </ResponsiveContainer>
