@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from 'react';
 import { Plus, Users, Loader2 } from 'lucide-react';
@@ -149,3 +149,4 @@ export default function SuppliersClient({ initialSuppliers }: { initialSuppliers
     </div>
   );
 }
+

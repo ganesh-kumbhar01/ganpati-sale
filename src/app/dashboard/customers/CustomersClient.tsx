@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from 'react';
 import { Users, Search, Phone, MessageCircle, FileText, Star, Edit3, Trash2, X } from 'lucide-react';
@@ -122,7 +122,7 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
   };
 
   const handleSendWhatsApp = (customer: any) => {
-    const text = `नमस्कार ${customer.name} जी!\nगणपति बाप्पा मोरया! 🙏`;
+    const text = `à¤¨à¤®à¤¸à¥à¤•à¤¾à¤° ${customer.name} à¤œà¥€!\nà¤—à¤£à¤ªà¤¤à¤¿ à¤¬à¤¾à¤ªà¥à¤ªà¤¾ à¤®à¥‹à¤°à¤¯à¤¾! ðŸ™`;
     const mobile = customer.mobile.replace(/\D/g,'');
     const url = `https://wa.me/91${mobile}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
@@ -166,6 +166,12 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
         )}
       </div>
 
+            <div className="flex justify-end sm:hidden mb-2">
+        <span className="text-[10px] text-slate-500 font-medium flex items-center gap-1 bg-slate-50 dark:bg-slate-800/50 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-700">
+          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          Scroll table to view more
+        </span>
+      </div>
       <div className="overflow-x-auto shadow-sm border border-slate-200 dark:border-slate-700 rounded-2xl bg-white dark:bg-slate-800">
         <table className="min-w-full divide-y divide-slate-200 dark:divide-slate-700">
           <thead className="bg-slate-50 dark:bg-slate-900/50">
@@ -229,7 +235,7 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
                     {customer.bookings.length} <span className="text-xs text-slate-500 font-normal">orders</span>
                   </div>
                   <div className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">
-                    ₹{customer.totalSpent}
+                    â‚¹{customer.totalSpent}
                   </div>
                 </td>
                 <td className="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">
@@ -296,11 +302,11 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
                           </button>
                         </h3>
                         <p className="text-slate-500 text-sm mt-1 flex items-center flex-wrap gap-2">
-                          <span>📞 {viewCustomer.mobile}</span>
+                          <span>ðŸ“ž {viewCustomer.mobile}</span>
                           <span className="hidden sm:inline">&bull;</span>
                           <span>{viewCustomer.customerType}</span>
                           <span className="hidden sm:inline">&bull;</span>
-                          <span className="font-bold text-emerald-600 dark:text-emerald-400">Total Spent: ₹{viewCustomer.totalSpent}</span>
+                          <span className="font-bold text-emerald-600 dark:text-emerald-400">Total Spent: â‚¹{viewCustomer.totalSpent}</span>
                         </p>
                       </div>
                     </div>
@@ -369,7 +375,7 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
                             </div>
                             <div className="flex justify-between text-xs text-slate-600 dark:text-slate-400">
                               <span>Qty: {booking.quantity}</span>
-                              <span className="font-semibold text-slate-900 dark:text-white">₹{booking.totalPrice}</span>
+                              <span className="font-semibold text-slate-900 dark:text-white">â‚¹{booking.totalPrice}</span>
                             </div>
                             <div className="mt-2 flex gap-2">
                               <span className={`px-2 py-0.5 text-[10px] font-bold rounded border ${
@@ -381,7 +387,7 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
                               </span>
                               {booking.balanceAmount > 0 && (
                                 <span className="px-2 py-0.5 text-[10px] font-bold rounded border border-rose-200 bg-rose-50 text-rose-700">
-                                  Pending: ₹{booking.balanceAmount}
+                                  Pending: â‚¹{booking.balanceAmount}
                                 </span>
                               )}
                             </div>
@@ -404,3 +410,4 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
     </div>
   );
 }
+

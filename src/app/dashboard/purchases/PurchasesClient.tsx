@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from 'react';
 import { Plus, ShoppingBag, Loader2 } from 'lucide-react';
@@ -74,6 +74,12 @@ export default function PurchasesClient({ initialPurchases, seasons, suppliers }
         </button>
       </div>
 
+            <div className="flex justify-end sm:hidden mb-2">
+        <span className="text-[10px] text-slate-500 font-medium flex items-center gap-1 bg-slate-50 dark:bg-slate-800/50 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-700">
+          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          Scroll table to view more
+        </span>
+      </div>
       <div className="overflow-x-auto shadow-sm border border-slate-200 dark:border-slate-700 rounded-2xl bg-white dark:bg-slate-800">
         <table className="min-w-full divide-y divide-slate-200 dark:divide-slate-700">
           <thead className="bg-slate-50 dark:bg-slate-900/50">
@@ -103,13 +109,13 @@ export default function PurchasesClient({ initialPurchases, seasons, suppliers }
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">
-                  ₹{purchase.totalAmount}
+                  â‚¹{purchase.totalAmount}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">
-                  ₹{purchase.transportCost}
+                  â‚¹{purchase.transportCost}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-slate-900 dark:text-white">
-                  ₹{purchase.totalAmount + purchase.transportCost + purchase.otherExpenses}
+                  â‚¹{purchase.totalAmount + purchase.transportCost + purchase.otherExpenses}
                 </td>
               </tr>
             ))}
@@ -156,17 +162,17 @@ export default function PurchasesClient({ initialPurchases, seasons, suppliers }
                         </div>
                         
                         <div className="sm:col-span-2">
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Murtis Cost (₹)</label>
+                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Murtis Cost (â‚¹)</label>
                           <input required type="number" min="0" step="0.01" name="totalAmount" value={formData.totalAmount} onChange={handleChange} placeholder="e.g. 50000" className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border" />
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Transport Cost (₹)</label>
+                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Transport Cost (â‚¹)</label>
                           <input type="number" min="0" step="0.01" name="transportCost" value={formData.transportCost} onChange={handleChange} placeholder="e.g. 2000" className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border" />
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Other Expenses (₹)</label>
+                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Other Expenses (â‚¹)</label>
                           <input type="number" min="0" step="0.01" name="otherExpenses" value={formData.otherExpenses} onChange={handleChange} placeholder="e.g. 500" className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border" />
                         </div>
                       </div>
@@ -189,3 +195,4 @@ export default function PurchasesClient({ initialPurchases, seasons, suppliers }
     </div>
   );
 }
+

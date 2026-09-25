@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from 'react';
 import { Search, CheckCircle, IndianRupee, Loader2, ArrowLeft } from 'lucide-react';
@@ -86,7 +86,7 @@ export default function PickupClient({ initialBookings }: { initialBookings: any
                       <p className="text-xs text-slate-500">{booking.customer.mobile}</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-xs font-semibold text-rose-600 dark:text-rose-400">Pending: ₹{booking.balanceAmount}</p>
+                      <p className="text-xs font-semibold text-rose-600 dark:text-rose-400">Pending: â‚¹{booking.balanceAmount}</p>
                     </div>
                   </div>
                   <div className="mt-2 text-xs text-slate-600 dark:text-slate-400">
@@ -144,21 +144,21 @@ export default function PickupClient({ initialBookings }: { initialBookings: any
             <div className="mt-8 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-4 border border-slate-100 dark:border-slate-700">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-sm text-slate-500">Total Amount:</span>
-                <span className="text-sm font-medium text-slate-900 dark:text-white">₹{selectedBooking.totalPrice}</span>
+                <span className="text-sm font-medium text-slate-900 dark:text-white">â‚¹{selectedBooking.totalPrice}</span>
               </div>
               <div className="flex justify-between items-center mb-2">
                 <span className="text-sm text-slate-500">Advance Paid:</span>
-                <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400">₹{selectedBooking.advanceAmount}</span>
+                <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400">â‚¹{selectedBooking.advanceAmount}</span>
               </div>
               <div className="flex justify-between items-center pt-2 border-t border-slate-200 dark:border-slate-700">
                 <span className="text-base font-bold text-slate-900 dark:text-white">Balance Pending:</span>
-                <span className="text-xl font-bold text-rose-600 dark:text-rose-400">₹{selectedBooking.balanceAmount}</span>
+                <span className="text-xl font-bold text-rose-600 dark:text-rose-400">â‚¹{selectedBooking.balanceAmount}</span>
               </div>
             </div>
 
             {selectedBooking.balanceAmount > 0 && (
               <div className="mt-8">
-                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Collect Final Payment (₹)</label>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Collect Final Payment (â‚¹)</label>
                 <div className="mt-2 relative rounded-md shadow-sm max-w-xs">
                   <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <IndianRupee className="h-5 w-5 text-slate-400" aria-hidden="true" />
@@ -204,3 +204,4 @@ export default function PickupClient({ initialBookings }: { initialBookings: any
     </div>
   );
 }
+

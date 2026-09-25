@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from 'react';
 import { Plus, Loader2, Trash2, Edit2, Phone, MessageCircle, CheckSquare } from 'lucide-react';
@@ -173,7 +173,7 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
 
         // Automatically open WhatsApp with confirmed booking message
         const selectedProd = products.find(p => p.id === formData.productId);
-        const text = `नमस्कार ${formData.customerName} जी!\n\nगणपति बाप्पा मोरया! 🙏\nआपकी बुकिंग कन्फर्म हो गई है।\n\n📌 मूर्ति: ${selectedProd?.name || ''} (Qty: ${payload.quantity})\n💰 कुल कीमत: ₹${payload.totalPrice}\n✅ जमा (Advance): ₹${payload.advanceAmount}\n❗ बाकी (Balance): ₹${payload.totalPrice - payload.advanceAmount}\n\nधन्यवाद!`;
+        const text = `à¤¨à¤®à¤¸à¥à¤•à¤¾à¤° ${formData.customerName} à¤œà¥€!\n\nà¤—à¤£à¤ªà¤¤à¤¿ à¤¬à¤¾à¤ªà¥à¤ªà¤¾ à¤®à¥‹à¤°à¤¯à¤¾! ðŸ™\nà¤†à¤ªà¤•à¥€ à¤¬à¥à¤•à¤¿à¤‚à¤— à¤•à¤¨à¥à¤«à¤°à¥à¤® à¤¹à¥‹ à¤—à¤ˆ à¤¹à¥ˆà¥¤\n\nðŸ“Œ à¤®à¥‚à¤°à¥à¤¤à¤¿: ${selectedProd?.name || ''} (Qty: ${payload.quantity})\nðŸ’° à¤•à¥à¤² à¤•à¥€à¤®à¤¤: â‚¹${payload.totalPrice}\nâœ… à¤œà¤®à¤¾ (Advance): â‚¹${payload.advanceAmount}\nâ— à¤¬à¤¾à¤•à¥€ (Balance): â‚¹${payload.totalPrice - payload.advanceAmount}\n\nà¤§à¤¨à¥à¤¯à¤µà¤¾à¤¦!`;
         const mobile = formData.customerMobile.replace(/\D/g,'');
         const url = `https://wa.me/91${mobile}?text=${encodeURIComponent(text)}`;
         
@@ -235,7 +235,7 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
   };
 
   const handleSendWhatsApp = (booking: any) => {
-    const text = `नमस्कार ${booking.customer?.name} जी!\n\nगणपति बाप्पा मोरया! 🙏\nआपकी बुकिंग कन्फर्म हो गई है।\n\n📌 मूर्ति: ${booking.product?.name} (Qty: ${booking.quantity})\n💰 कुल कीमत: ₹${booking.totalPrice}\n✅ जमा (Advance): ₹${booking.advanceAmount}\n❗ बाकी (Balance): ₹${booking.balanceAmount}\n\nधन्यवाद!`;
+    const text = `à¤¨à¤®à¤¸à¥à¤•à¤¾à¤° ${booking.customer?.name} à¤œà¥€!\n\nà¤—à¤£à¤ªà¤¤à¤¿ à¤¬à¤¾à¤ªà¥à¤ªà¤¾ à¤®à¥‹à¤°à¤¯à¤¾! ðŸ™\nà¤†à¤ªà¤•à¥€ à¤¬à¥à¤•à¤¿à¤‚à¤— à¤•à¤¨à¥à¤«à¤°à¥à¤® à¤¹à¥‹ à¤—à¤ˆ à¤¹à¥ˆà¥¤\n\nðŸ“Œ à¤®à¥‚à¤°à¥à¤¤à¤¿: ${booking.product?.name} (Qty: ${booking.quantity})\nðŸ’° à¤•à¥à¤² à¤•à¥€à¤®à¤¤: â‚¹${booking.totalPrice}\nâœ… à¤œà¤®à¤¾ (Advance): â‚¹${booking.advanceAmount}\nâ— à¤¬à¤¾à¤•à¥€ (Balance): â‚¹${booking.balanceAmount}\n\nà¤§à¤¨à¥à¤¯à¤µà¤¾à¤¦!`;
     const mobile = booking.customer?.mobile.replace(/\D/g,'');
     const url = `https://wa.me/91${mobile}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
@@ -315,6 +315,12 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
         )}
       </div>
 
+            <div className="flex justify-end sm:hidden mb-2">
+        <span className="text-[10px] text-slate-500 font-medium flex items-center gap-1 bg-slate-50 dark:bg-slate-800/50 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-700">
+          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          Scroll table to view more
+        </span>
+      </div>
       <div className="overflow-x-auto shadow-sm border border-slate-200 dark:border-slate-700 rounded-2xl bg-white dark:bg-slate-800">
         <table className="min-w-full divide-y divide-slate-200 dark:divide-slate-700">
           <thead className="bg-slate-50 dark:bg-slate-900/50">
@@ -358,9 +364,9 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                   <div className="text-sm text-slate-500 dark:text-slate-400">Qty: {booking.quantity}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm">
-                  <span className="text-slate-900 dark:text-white font-medium">Total: ₹{booking.totalPrice}</span>
+                  <span className="text-slate-900 dark:text-white font-medium">Total: â‚¹{booking.totalPrice}</span>
                   <br />
-                  <span className="text-rose-600 dark:text-rose-400 font-medium text-xs">Pending: ₹{booking.balanceAmount}</span>
+                  <span className="text-rose-600 dark:text-rose-400 font-medium text-xs">Pending: â‚¹{booking.balanceAmount}</span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
@@ -482,10 +488,10 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                                   <div className="p-2 flex-1 flex flex-col justify-between">
                                     <div>
                                       <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{p.name}</p>
-                                      <p className="text-[10px] text-slate-500">{p.size || '-'} • {p.material}</p>
+                                      <p className="text-[10px] text-slate-500">{p.size || '-'} â€¢ {p.material}</p>
                                     </div>
                                     <div className="mt-2 flex justify-between items-end">
-                                      <span className="text-xs font-bold text-emerald-600">₹{p.sellingPrice}</span>
+                                      <span className="text-xs font-bold text-emerald-600">â‚¹{p.sellingPrice}</span>
                                       <span className={`text-[10px] font-semibold ${p.qtyAvailable < 5 ? 'text-rose-500' : 'text-slate-500'}`}>{p.qtyAvailable} left</span>
                                     </div>
                                   </div>
@@ -533,12 +539,12 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">{isDirectSale ? 'Price Paid (₹)' : 'Total Price (₹)'}</label>
+                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">{isDirectSale ? 'Price Paid (â‚¹)' : 'Total Price (â‚¹)'}</label>
                         <input required type="number" step="0.01" name="totalPrice" placeholder="e.g. 5000" value={formData.totalPrice} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-3 py-2 border font-bold placeholder-slate-300 dark:placeholder-slate-500" />
                       </div>
                       {!isDirectSale && (
                         <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Advance Amount Paid (₹)</label>
+                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Advance Amount Paid (â‚¹)</label>
                           <input required type="number" step="0.01" min="0" name="advanceAmount" placeholder="e.g. 2000" value={formData.advanceAmount} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-emerald-50 dark:bg-slate-900 text-emerald-700 dark:text-emerald-400 px-3 py-2 border font-bold placeholder-emerald-200 dark:placeholder-emerald-800/50" />
                         </div>
                       )}
@@ -581,7 +587,7 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                   <div className="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-4 mb-4">
                     <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Customer</h4>
                     <p className="text-base font-medium text-slate-900 dark:text-white">{viewBooking.customer?.name}</p>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">📞 {viewBooking.customer?.mobile}</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">ðŸ“ž {viewBooking.customer?.mobile}</p>
                   </div>
 
                   <div className="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-4 mb-4">
@@ -594,12 +600,12 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                   <div className="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-4 mb-4 flex justify-between items-center">
                     <div>
                       <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Financials</h4>
-                      <p className="text-sm text-slate-900 dark:text-white">Total: <span className="font-semibold">₹{viewBooking.totalPrice}</span></p>
-                      <p className="text-sm text-emerald-600 dark:text-emerald-400">Advance: <span className="font-semibold">₹{viewBooking.advanceAmount}</span></p>
+                      <p className="text-sm text-slate-900 dark:text-white">Total: <span className="font-semibold">â‚¹{viewBooking.totalPrice}</span></p>
+                      <p className="text-sm text-emerald-600 dark:text-emerald-400">Advance: <span className="font-semibold">â‚¹{viewBooking.advanceAmount}</span></p>
                     </div>
                     <div className="text-right">
                       <p className="text-xs font-bold text-rose-500 uppercase tracking-wider mb-1">Balance Due</p>
-                      <p className="text-2xl font-bold text-rose-600 dark:text-rose-400">₹{viewBooking.balanceAmount}</p>
+                      <p className="text-2xl font-bold text-rose-600 dark:text-rose-400">â‚¹{viewBooking.balanceAmount}</p>
                     </div>
                   </div>
 
@@ -612,7 +618,7 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
 
                   {viewBooking.pickupDate && (
                     <p className="mt-4 text-sm text-slate-600 dark:text-slate-400 text-center">
-                      📅 Scheduled Pickup: {new Date(viewBooking.pickupDate).toLocaleDateString()}
+                      ðŸ“… Scheduled Pickup: {new Date(viewBooking.pickupDate).toLocaleDateString()}
                     </p>
                   )}
 
@@ -633,3 +639,4 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
     </div>
   );
 }
+

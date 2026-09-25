@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -194,3 +194,4 @@ export default function SeasonsClient({ initialSeasons }: { initialSeasons: any[
     </div>
   );
 }
+

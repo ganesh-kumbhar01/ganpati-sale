@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useEffect } from 'react';
 
@@ -40,14 +40,14 @@ export default function PrintClient({ bookings }: { bookings: any[] }) {
             <div>
               <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Customer Details</h4>
               <p className="font-bold text-slate-900 text-lg">{booking.customer.name}</p>
-              <p className="text-slate-600">📞 {booking.customer.mobile}</p>
+              <p className="text-slate-600">ðŸ“ž {booking.customer.mobile}</p>
             </div>
             <div>
               <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Pickup Details</h4>
               <p className="text-slate-800">
                 {booking.pickupDate 
-                  ? `📅 ${new Date(booking.pickupDate).toLocaleDateString()}` 
-                  : '📅 Date Not Assigned'}
+                  ? `ðŸ“… ${new Date(booking.pickupDate).toLocaleDateString()}` 
+                  : 'ðŸ“… Date Not Assigned'}
               </p>
             </div>
           </div>
@@ -69,7 +69,7 @@ export default function PrintClient({ bookings }: { bookings: any[] }) {
                 </td>
                 <td className="py-4 text-center text-slate-800">{booking.product.material}</td>
                 <td className="py-4 text-center text-slate-800">{booking.quantity}</td>
-                <td className="py-4 text-right font-semibold text-slate-900">₹{booking.totalPrice}</td>
+                <td className="py-4 text-right font-semibold text-slate-900">â‚¹{booking.totalPrice}</td>
               </tr>
             </tbody>
           </table>
@@ -78,15 +78,15 @@ export default function PrintClient({ bookings }: { bookings: any[] }) {
             <div className="w-64 space-y-3">
               <div className="flex justify-between text-slate-600">
                 <span>Total Amount:</span>
-                <span className="font-semibold text-slate-900">₹{booking.totalPrice}</span>
+                <span className="font-semibold text-slate-900">â‚¹{booking.totalPrice}</span>
               </div>
               <div className="flex justify-between text-slate-600">
                 <span>Advance Paid:</span>
-                <span className="font-semibold text-emerald-600">₹{booking.advanceAmount}</span>
+                <span className="font-semibold text-emerald-600">â‚¹{booking.advanceAmount}</span>
               </div>
               <div className="flex justify-between border-t border-slate-200 pt-3 text-lg">
                 <span className="font-bold text-slate-900">Balance Due:</span>
-                <span className="font-bold text-rose-600">₹{booking.balanceAmount}</span>
+                <span className="font-bold text-rose-600">â‚¹{booking.balanceAmount}</span>
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function PrintClient({ bookings }: { bookings: any[] }) {
           </div>
           
           <div className="mt-8 text-center text-xs text-slate-400">
-            <p>Thank you for your business. Ganpati Bappa Morya! 🙏</p>
+            <p>Thank you for your business. Ganpati Bappa Morya! ðŸ™</p>
           </div>
 
         </div>
@@ -105,3 +105,4 @@ export default function PrintClient({ bookings }: { bookings: any[] }) {
     </div>
   );
 }
+
