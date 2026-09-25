@@ -1,9 +1,10 @@
-﻿"use client";
+"use client";
 
 import React, { useState } from 'react';
 import { Plus, Loader2, Trash2, Edit2, Phone, MessageCircle, CheckSquare } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import imageCompression from 'browser-image-compression';
 
 export default function BookingsClient({ initialBookings, seasons, products }: { initialBookings: any[], seasons: any[], products: any[] }) {
   const router = useRouter();
@@ -142,13 +143,17 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
         // Handle New
         let imageUrl = null;
         if (imageFile) {
+          toast.loading('Compressing and uploading image...', { id: 'upload-toast' });
+          const options = { maxSizeMB: 1, maxWidthOrHeight: 1024, useWebWorker: true };
+          const compressedFile = await imageCompression(imageFile, options);
           const formDataImg = new FormData();
-          formDataImg.append('file', imageFile);
+          formDataImg.append('file', compressedFile);
           const uploadRes = await fetch('/api/upload', {
             method: 'POST',
             body: formDataImg,
           });
           const uploadData = await uploadRes.json();
+          toast.dismiss('upload-toast');
           if (!uploadRes.ok) throw new Error('Image upload failed');
           imageUrl = uploadData.url;
         }
