@@ -43,3 +43,14 @@ svg:active {
 .overflow-x-auto::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 .dark .overflow-x-auto::-webkit-scrollbar-thumb { background: #475569; }
 .dark .overflow-x-auto::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+/* Remove focus outline from all recharts elements */
+.recharts-wrapper,
+.recharts-surface,
+.recharts-responsive-container,
+.recharts-rectangle,
+.recharts-tooltip-wrapper,
+.recharts-layer,
+[class*="recharts"] {
+  outline: none !important;
+}
