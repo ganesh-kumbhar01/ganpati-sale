@@ -29,8 +29,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Sidebar */}
       <div className="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 hidden md:flex md:flex-col">
         <div className="flex h-16 shrink-0 items-center px-6 border-b border-slate-200 dark:border-slate-800 gap-3">
-          <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-rose-600 flex items-center justify-center shadow-lg shadow-orange-500/30 border border-orange-400/50">
-            <span className="text-white font-black text-xl leading-none font-sans drop-shadow-md">G</span>
+          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md overflow-hidden p-0.5 border border-slate-200 dark:border-slate-700">
+            <img src="/new-logo.jpg" alt="Ganpati Logo" className="w-full h-full object-cover rounded-full mix-blend-multiply dark:mix-blend-normal transform scale-110" />
           </div>
           <span className="text-2xl font-extrabold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent tracking-tight">Ganpati</span>
         </div>
@@ -67,8 +67,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Persistent Top Header */}
         <header className="sticky top-0 z-10 flex h-16 flex-shrink-0 items-center justify-between gap-x-2 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur px-3 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
           <div className="flex items-center gap-x-2.5 md:hidden">
-            <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-rose-600 flex items-center justify-center shadow-lg shadow-orange-500/30 border border-orange-400/50">
-              <span className="text-white font-black text-xl leading-none font-sans drop-shadow-md">G</span>
+            <div className="flex-shrink-0 w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-sm overflow-hidden p-0.5 border border-slate-200 dark:border-slate-700">
+              <img src="/new-logo.jpg" alt="Ganpati Logo" className="w-full h-full object-cover rounded-full mix-blend-multiply dark:mix-blend-normal transform scale-110" />
             </div>
             <div className="text-lg font-extrabold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent tracking-tight hidden sm:block">Ganpati</div>
           </div>
