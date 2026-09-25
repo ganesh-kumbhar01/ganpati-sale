@@ -235,7 +235,7 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
                     {customer.bookings.length} <span className="text-xs text-slate-500 font-normal">orders</span>
                   </div>
                   <div className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">
-                    â‚¹{customer.totalSpent}
+                    Rs. {customer.totalSpent}
                   </div>
                 </td>
                 <td className="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">
@@ -306,7 +306,7 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
                           <span className="hidden sm:inline">&bull;</span>
                           <span>{viewCustomer.customerType}</span>
                           <span className="hidden sm:inline">&bull;</span>
-                          <span className="font-bold text-emerald-600 dark:text-emerald-400">Total Spent: â‚¹{viewCustomer.totalSpent}</span>
+                          <span className="font-bold text-emerald-600 dark:text-emerald-400">Total Spent: Rs. {viewCustomer.totalSpent}</span>
                         </p>
                       </div>
                     </div>
@@ -375,7 +375,7 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
                             </div>
                             <div className="flex justify-between text-xs text-slate-600 dark:text-slate-400">
                               <span>Qty: {booking.quantity}</span>
-                              <span className="font-semibold text-slate-900 dark:text-white">â‚¹{booking.totalPrice}</span>
+                              <span className="font-semibold text-slate-900 dark:text-white">Rs. {booking.totalPrice}</span>
                             </div>
                             <div className="mt-2 flex gap-2">
                               <span className={`px-2 py-0.5 text-[10px] font-bold rounded border ${
@@ -387,7 +387,7 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
                               </span>
                               {booking.balanceAmount > 0 && (
                                 <span className="px-2 py-0.5 text-[10px] font-bold rounded border border-rose-200 bg-rose-50 text-rose-700">
-                                  Pending: â‚¹{booking.balanceAmount}
+                                  Pending: Rs. {booking.balanceAmount}
                                 </span>
                               )}
                             </div>
@@ -410,4 +410,5 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
     </div>
   );
 }
+
 

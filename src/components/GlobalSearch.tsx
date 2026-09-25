@@ -119,7 +119,7 @@ export function GlobalSearch() {
                       <div className="text-xs text-slate-500">{b.product?.name} (Qty: {b.quantity})</div>
                     </div>
                   </div>
-                  <div className="text-sm font-semibold text-slate-900 dark:text-white">₹{b.totalPrice}</div>
+                  <div className="text-sm font-semibold text-slate-900 dark:text-white">Rs. {b.totalPrice}</div>
                 </div>
               ))}
             </div>
