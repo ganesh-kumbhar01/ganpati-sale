@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { Product } from '@prisma/client';
-import { ImageIcon, Flame } from 'lucide-react';
+import { ImageIcon, Flame, Trash2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 export default function ClearanceClient({ products }: { products: Product[] }) {
   if (products.length === 0) {
@@ -47,6 +49,7 @@ export default function ClearanceClient({ products }: { products: Product[] }) {
                 <th className="px-6 py-4 text-center text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Available Qty</th>
                 <th className="px-6 py-4 text-right text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Cost</th>
                 <th className="px-6 py-4 text-right text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Expected</th>
+                <th className="px-6 py-4 text-center text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900">
@@ -77,6 +80,11 @@ export default function ClearanceClient({ products }: { products: Product[] }) {
                   <td className="px-6 py-4 whitespace-nowrap text-right">
                     <div className="text-sm font-bold text-emerald-600 dark:text-emerald-400">₹{(product.sellingPrice * product.qtyAvailable).toLocaleString('en-IN')}</div>
                     <div className="text-xs text-slate-500 mt-1">₹{product.sellingPrice.toLocaleString('en-IN')} / piece</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center">
+                    <button onClick={() => handleRemove(product.id)} className="text-slate-400 hover:text-rose-500 p-2 rounded-full hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-colors" title="Remove from Clearance">
+                      <Trash2 className="w-5 h-5" />
+                    </button>
                   </td>
                 </tr>
               ))}
