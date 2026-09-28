@@ -20,13 +20,21 @@ export default function ClearanceClient({ products }: { products: Product[] }) {
   }
 
   const totalDeadStockValue = products.reduce((acc, p) => acc + (p.qtyAvailable * p.purchasePrice), 0);
+  const totalExpectedRevenue = products.reduce((acc, p) => acc + (p.qtyAvailable * p.sellingPrice), 0);
 
   return (
     <div className="space-y-6">
-      <div className="bg-gradient-to-br from-orange-500 to-rose-600 rounded-2xl shadow-sm p-6 text-white">
-        <h3 className="text-lg font-medium text-orange-100">At-Risk Capital (Cost Price)</h3>
-        <p className="text-3xl font-extrabold mt-2">₹{totalDeadStockValue.toLocaleString('en-IN')}</p>
-        <p className="text-sm text-orange-200 mt-1">This is the total cost of all available items in the watchlist.</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl shadow-sm p-6 text-white">
+          <h3 className="text-lg font-medium text-rose-100">Total Cost (Fasa Hua Paisa)</h3>
+          <p className="text-3xl font-extrabold mt-2">₹{totalDeadStockValue.toLocaleString('en-IN')}</p>
+          <p className="text-sm text-rose-200 mt-1">Cost price of all clearance items.</p>
+        </div>
+        <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-sm p-6 text-white">
+          <h3 className="text-lg font-medium text-emerald-100">Total Expected</h3>
+          <p className="text-3xl font-extrabold mt-2">₹{totalExpectedRevenue.toLocaleString('en-IN')}</p>
+          <p className="text-sm text-emerald-200 mt-1">Selling price of all clearance items.</p>
+        </div>
       </div>
 
       <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
@@ -37,8 +45,8 @@ export default function ClearanceClient({ products }: { products: Product[] }) {
                 <th className="px-6 py-4 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Image</th>
                 <th className="px-6 py-4 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Murti Details</th>
                 <th className="px-6 py-4 text-center text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Available Qty</th>
-                <th className="px-6 py-4 text-right text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Cost Price</th>
-                <th className="px-6 py-4 text-right text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Selling Price</th>
+                <th className="px-6 py-4 text-right text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Cost</th>
+                <th className="px-6 py-4 text-right text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Expected</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900">
@@ -62,11 +70,13 @@ export default function ClearanceClient({ products }: { products: Product[] }) {
                       {product.qtyAvailable} left
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium text-slate-900 dark:text-slate-300">
-                    ₹{product.purchasePrice.toLocaleString('en-IN')}
+                  <td className="px-6 py-4 whitespace-nowrap text-right">
+                    <div className="text-sm font-bold text-rose-600 dark:text-rose-400">₹{(product.purchasePrice * product.qtyAvailable).toLocaleString('en-IN')}</div>
+                    <div className="text-xs text-slate-500 mt-1">₹{product.purchasePrice.toLocaleString('en-IN')} / piece</div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-bold text-emerald-600 dark:text-emerald-400">
-                    ₹{product.sellingPrice.toLocaleString('en-IN')}
+                  <td className="px-6 py-4 whitespace-nowrap text-right">
+                    <div className="text-sm font-bold text-emerald-600 dark:text-emerald-400">₹{(product.sellingPrice * product.qtyAvailable).toLocaleString('en-IN')}</div>
+                    <div className="text-xs text-slate-500 mt-1">₹{product.sellingPrice.toLocaleString('en-IN')} / piece</div>
                   </td>
                 </tr>
               ))}
