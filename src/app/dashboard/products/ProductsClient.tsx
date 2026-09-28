@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import React, { useState } from 'react';
-import { Plus, Package, Loader2, Trash2, Camera, ImageIcon } from 'lucide-react';
+import { Plus, Package, Loader2, Trash2, Camera, ImageIcon, Flame } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import imageCompression from 'browser-image-compression';
@@ -138,6 +138,25 @@ export default function ProductsClient({ initialProducts, seasons }: { initialPr
     }
   };
 
+    const handleToggleClearance = async (id: string, currentStatus: boolean) => {
+    try {
+      const res = await fetch(`/api/products/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ isClearance: !currentStatus })
+      });
+      if (res.ok) {
+        toast.success(!currentStatus ? 'Marked for Clearance' : 'Removed from Clearance');
+        router.refresh();
+      } else {
+        const error = await res.json();
+        toast.error(error.error);
+      }
+    } catch (e) {
+      toast.error('Failed to update status');
+    }
+  };
+
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this product? (Cannot be deleted if it has bookings)')) return;
     try {
@@ -226,7 +245,10 @@ export default function ProductsClient({ initialProducts, seasons }: { initialPr
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                   <div className="flex items-center justify-center gap-3" onClick={(e) => e.stopPropagation()}>
-                    <button onClick={() => handleDelete(product.id)} className="text-slate-400 hover:text-rose-600 transition-colors p-2 rounded-full hover:bg-rose-50 dark:hover:bg-rose-900/20 inline-flex" title="Delete Product">
+                                          <button onClick={(e) => { e.stopPropagation(); handleToggleClearance(product.id, product.isClearance || false); }} className={`p-2 rounded-full transition-colors inline-flex ${product.isClearance ? 'text-orange-500 bg-orange-50 dark:bg-orange-900/20' : 'text-slate-400 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20'}`} title={product.isClearance ? 'Remove from Clearance' : 'Mark for Clearance'}>
+                        <Flame className="w-5 h-5" />
+                      </button>
+                      <button onClick={() => handleDelete(product.id)} className="text-slate-400 hover:text-rose-600 transition-colors p-2 rounded-full hover:bg-rose-50 dark:hover:bg-rose-900/20 inline-flex" title="Delete Product">
                       <Trash2 className="w-5 h-5" />
                     </button>
                   </div>

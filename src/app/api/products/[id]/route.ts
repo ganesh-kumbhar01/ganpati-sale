@@ -11,6 +11,7 @@ const productSchema = z.object({
   sellingPrice: z.number().min(0).optional(),
   qtyPurchased: z.number().int().min(0).optional(),
   imageUrl: z.string().optional().nullable(),
+  isClearance: z.boolean().optional(),
 });
 
 export async function PUT(req: Request, { params }: { params: { id: string } }) {

@@ -65,6 +65,7 @@ model Product {
   qtyBooked     Int       @default(0)
   qtyPickedUp   Int       @default(0)
   imageUrl      String?
+  isClearance   Boolean   @default(false)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
