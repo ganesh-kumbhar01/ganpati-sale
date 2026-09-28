@@ -215,13 +215,13 @@ export default async function SeasonReportPage({ params }: { params: { id: strin
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                  <div className="bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl shadow-sm p-6 text-white print:border print:border-rose-200 print:bg-none print:text-rose-900" style={{ WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}>
-                    <h3 className="text-lg font-medium text-rose-100 print:text-rose-800">Total Cost (Fasa Hua Paisa)</h3>
-                    <p className="text-3xl font-extrabold mt-2">₹{totalUnsoldCost.toLocaleString('en-IN')}</p>
+                  <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 border border-slate-100 dark:border-slate-700 print:border print:border-slate-300 print:bg-none print:shadow-none" style={{ WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}>
+                    <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide print:text-slate-600">Total Cost (Fasa Hua Paisa)</h3>
+                    <p className="text-3xl font-extrabold mt-2 text-slate-900 dark:text-white print:text-black">₹{totalUnsoldCost.toLocaleString('en-IN')}</p>
                   </div>
-                  <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-sm p-6 text-white print:border print:border-emerald-200 print:bg-none print:text-emerald-900" style={{ WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}>
-                    <h3 className="text-lg font-medium text-emerald-100 print:text-emerald-800">Total Expected</h3>
-                    <p className="text-3xl font-extrabold mt-2">₹{totalUnsoldExpected.toLocaleString('en-IN')}</p>
+                  <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 border border-slate-100 dark:border-slate-700 print:border print:border-slate-300 print:bg-none print:shadow-none" style={{ WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}>
+                    <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide print:text-slate-600">Total Expected</h3>
+                    <p className="text-3xl font-extrabold mt-2 text-slate-900 dark:text-white print:text-black">₹{totalUnsoldExpected.toLocaleString('en-IN')}</p>
                   </div>
                 </div>
 

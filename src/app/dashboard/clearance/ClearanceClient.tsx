@@ -25,15 +25,15 @@ export default function ClearanceClient({ products }: { products: Product[] }) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl shadow-sm p-6 text-white">
-          <h3 className="text-lg font-medium text-rose-100">Total Cost (Fasa Hua Paisa)</h3>
-          <p className="text-3xl font-extrabold mt-2">₹{totalDeadStockValue.toLocaleString('en-IN')}</p>
-          <p className="text-sm text-rose-200 mt-1">Cost price of all clearance items.</p>
+        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 border border-slate-100 dark:border-slate-700">
+          <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Total Cost (Fasa Hua Paisa)</h3>
+          <p className="text-3xl font-extrabold mt-2 text-slate-900 dark:text-white">₹{totalDeadStockValue.toLocaleString('en-IN')}</p>
+          <p className="text-sm text-slate-400 dark:text-slate-500 mt-2">Cost price of all clearance items.</p>
         </div>
-        <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-sm p-6 text-white">
-          <h3 className="text-lg font-medium text-emerald-100">Total Expected</h3>
-          <p className="text-3xl font-extrabold mt-2">₹{totalExpectedRevenue.toLocaleString('en-IN')}</p>
-          <p className="text-sm text-emerald-200 mt-1">Selling price of all clearance items.</p>
+        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 border border-slate-100 dark:border-slate-700">
+          <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Total Expected</h3>
+          <p className="text-3xl font-extrabold mt-2 text-slate-900 dark:text-white">₹{totalExpectedRevenue.toLocaleString('en-IN')}</p>
+          <p className="text-sm text-slate-400 dark:text-slate-500 mt-2">Selling price of all clearance items.</p>
         </div>
       </div>
 
