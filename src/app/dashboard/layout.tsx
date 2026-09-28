@@ -29,10 +29,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Sidebar */}
       <div className="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 hidden md:flex md:flex-col">
         <div className="flex h-16 shrink-0 items-center px-6 border-b border-slate-200 dark:border-slate-800 gap-3">
-          <div className="flex-shrink-0 w-14 h-14 overflow-hidden flex items-center justify-center">
-            <img src="/logo-transparent.png" alt="Ekdant Logo" className="w-full h-full object-contain" />
+          <div className="flex-shrink-0 w-10 h-10 overflow-hidden flex items-center justify-center">
+            <img src="/sanchit-logo-transparent.png" alt="Sanchit Logo" className="w-full h-full object-contain" />
           </div>
-          <span className="text-2xl font-extrabold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent tracking-tight">Ekdant</span>
+          <span className="text-2xl font-extrabold text-[#555aa8] tracking-tight">Sanchit</span>
         </div>
         <div className="flex flex-1 flex-col overflow-y-auto">
           <nav className="flex-1 space-y-1 px-4 py-4">
@@ -67,10 +67,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Persistent Top Header */}
         <header className="sticky top-0 z-10 flex h-16 flex-shrink-0 items-center justify-between gap-x-2 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur px-3 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
           <div className="flex items-center gap-x-2.5 md:hidden">
-            <div className="flex-shrink-0 w-12 h-12 overflow-hidden flex items-center justify-center">
-              <img src="/logo-transparent.png" alt="Ekdant Logo" className="w-full h-full object-contain" />
+            <div className="flex-shrink-0 w-8 h-8 overflow-hidden flex items-center justify-center">
+              <img src="/sanchit-logo-transparent.png" alt="Sanchit Logo" className="w-full h-full object-contain" />
             </div>
-            <div className="text-lg font-extrabold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent tracking-tight hidden sm:block">Ekdant</div>
+            <div className="text-lg font-extrabold text-[#555aa8] tracking-tight hidden sm:block">Sanchit</div>
           </div>
           
           <div className="flex flex-1 items-center justify-end md:justify-between w-full">
