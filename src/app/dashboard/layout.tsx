@@ -31,9 +31,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <div className="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 hidden md:flex md:flex-col text-slate-900 dark:text-white">
         <div className="flex h-16 shrink-0 items-center px-6 border-b border-slate-200 dark:border-slate-800 gap-3">
           <div className="flex-shrink-0 w-10 h-10 overflow-hidden flex items-center justify-center">
-            <img src="/sanchit-logo-transparent.png" alt="Sanchit Logo" className="w-full h-full object-contain drop-shadow-sm" />
+            <div className="w-full h-full bg-[#b8baff]" style={{ WebkitMaskImage: 'url(/sanchit-logo-transparent.png)', WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center', maskImage: 'url(/sanchit-logo-transparent.png)', maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center' }} aria-label="Sanchit Logo" role="img" />
           </div>
-          <span className="text-2xl font-extrabold text-[#555aa8] tracking-tight">Sanchit</span>
+          <span className="text-2xl font-extrabold text-[#b8baff] tracking-tight">Sanchit</span>
         </div>
         <div className="flex flex-1 flex-col overflow-y-auto">
           <nav className="flex-1 space-y-1 px-4 py-4">
@@ -69,9 +69,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <header className="sticky top-0 z-10 flex h-16 flex-shrink-0 items-center justify-between gap-x-2 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur px-3 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
           <div className="flex items-center gap-x-2.5 md:hidden">
             <div className="flex-shrink-0 w-8 h-8 overflow-hidden flex items-center justify-center">
-              <img src="/sanchit-logo-transparent.png" alt="Sanchit Logo" className="w-full h-full object-contain drop-shadow-sm" />
+              <div className="w-full h-full bg-[#b8baff]" style={{ WebkitMaskImage: 'url(/sanchit-logo-transparent.png)', WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center', maskImage: 'url(/sanchit-logo-transparent.png)', maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center' }} aria-label="Sanchit Logo" role="img" />
             </div>
-            <div className="text-lg font-extrabold text-[#555aa8] tracking-tight hidden sm:block">Sanchit</div>
+            <div className="text-lg font-extrabold text-[#b8baff] tracking-tight hidden sm:block">Sanchit</div>
           </div>
           
           <div className="flex flex-1 items-center justify-end md:justify-between w-full">
