@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import React, { useState } from 'react';
-import { Plus, Package, Loader2, Trash2, Camera, ImageIcon, Flame, Users } from 'lucide-react';
+import { Plus, Package, Loader2, Trash2, Camera, ImageIcon, Flame, Users, Search, Filter } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import imageCompression from 'browser-image-compression';
@@ -9,6 +9,21 @@ import imageCompression from 'browser-image-compression';
 export default function ProductsClient({ initialProducts, seasons }: { initialProducts: any[], seasons: any[] }) {
   const router = useRouter();
   const [products, setProducts] = useState(initialProducts);
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterMaterial, setFilterMaterial] = useState('All');
+  const [filterStock, setFilterStock] = useState('All');
+
+  const filteredProducts = products.filter((p: any) => {
+    const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesMaterial = filterMaterial === 'All' || p.material === filterMaterial;
+    let matchesStock = true;
+    if (filterStock === 'In Stock') matchesStock = p.qtyAvailable > 0;
+    if (filterStock === 'Out of Stock') matchesStock = p.qtyAvailable === 0;
+    
+    return matchesSearch && matchesMaterial && matchesStock;
+  });
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -234,7 +249,7 @@ export default function ProductsClient({ initialProducts, seasons }: { initialPr
             </tr>
           </thead>
           <tbody className="bg-white dark:bg-slate-800 divide-y divide-slate-200 dark:divide-slate-700">
-            {products.map((product) => (
+            {filteredProducts.map((product: any) => (
               <tr 
                 key={product.id}
                 className="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer"
@@ -291,7 +306,7 @@ export default function ProductsClient({ initialProducts, seasons }: { initialPr
                 </td>
               </tr>
             ))}
-            {products.length === 0 && (
+            {filteredProducts.length === 0 && (
               <tr>
                 <td colSpan={6} className="px-6 py-12 text-center text-sm text-slate-500">
                   No products added yet.
