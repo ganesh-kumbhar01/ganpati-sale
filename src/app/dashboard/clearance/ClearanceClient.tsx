@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 export default function ClearanceClient({ products }: { products: Product[] }) {
   if (products.length === 0) {
     return (
-      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-8 sm:p-12 text-center">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-8 sm:p-12 text-center text-slate-900 dark:text-white">
         <div className="mx-auto w-16 h-16 sm:w-20 sm:h-20 bg-orange-50 dark:bg-orange-900/20 rounded-full flex items-center justify-center mb-4 sm:mb-6">
           <Flame className="w-8 h-8 sm:w-10 sm:h-10 text-orange-400" />
         </div>
@@ -39,7 +39,7 @@ export default function ClearanceClient({ products }: { products: Product[] }) {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden text-slate-900 dark:text-white">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-slate-200 dark:divide-slate-800">
             <thead className="bg-slate-50 dark:bg-slate-800/50">
@@ -52,7 +52,7 @@ export default function ClearanceClient({ products }: { products: Product[] }) {
                 <th className="px-6 py-4 text-center text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
               {products.map((product) => (
                 <tr key={product.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
                   <td className="px-6 py-4 whitespace-nowrap">

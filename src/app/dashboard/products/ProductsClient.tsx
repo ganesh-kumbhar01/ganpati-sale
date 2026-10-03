@@ -288,36 +288,36 @@ export default function ProductsClient({ initialProducts, seasons }: { initialPr
                     <div className="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2">
                       <div className="sm:col-span-2">
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Season</label>
-                        <select required name="seasonId" value={formData.seasonId} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border">
+                        <select required name="seasonId" value={formData.seasonId} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border text-slate-900 dark:text-white">
                           {seasons.map(s => <option key={s.id} value={s.id}>{s.name} ({s.year})</option>)}
                         </select>
                       </div>
                       <div className="sm:col-span-2">
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Product Name / Design</label>
-                        <input required type="text" name="name" value={formData.name} onChange={handleChange} placeholder="e.g. Traditional Ganpati" className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border" />
+                        <input required type="text" name="name" value={formData.name} onChange={handleChange} placeholder="e.g. Traditional Ganpati" className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border text-slate-900 dark:text-white" />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Material Type</label>
-                        <select required name="material" value={formData.material} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border">
+                        <select required name="material" value={formData.material} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border text-slate-900 dark:text-white">
                           <option value="POP">POP</option>
                           <option value="Eco-friendly">Eco-friendly (Shadu Mati)</option>
                         </select>
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Size / Height</label>
-                        <input type="text" name="size" value={formData.size} onChange={handleChange} placeholder="e.g. 3 Feet" className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border" />
+                        <input type="text" name="size" value={formData.size} onChange={handleChange} placeholder="e.g. 3 Feet" className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border text-slate-900 dark:text-white" />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Quantity Purchased</label>
-                        <input required type="number" min="0" name="qtyPurchased" value={formData.qtyPurchased} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border" />
+                        <input required type="number" min="0" name="qtyPurchased" value={formData.qtyPurchased} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border text-slate-900 dark:text-white" />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Purchase Price (₹)</label>
-                        <input required type="number" min="0" step="0.01" name="purchasePrice" value={formData.purchasePrice} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border" />
+                        <input required type="number" min="0" step="0.01" name="purchasePrice" value={formData.purchasePrice} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border text-slate-900 dark:text-white" />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Selling Price (₹)</label>
-                        <input required type="number" min="0" step="0.01" name="sellingPrice" value={formData.sellingPrice} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border" />
+                        <input required type="number" min="0" step="0.01" name="sellingPrice" value={formData.sellingPrice} onChange={handleChange} className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white dark:bg-slate-900 px-3 py-2 border text-slate-900 dark:text-white" />
                       </div>
                       <div className="sm:col-span-2 border-t border-slate-200 dark:border-slate-700 pt-4 mt-2">
                         <h4 className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3">Product Photo</h4>

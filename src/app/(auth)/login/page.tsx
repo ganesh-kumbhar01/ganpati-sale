@@ -76,7 +76,7 @@ function AuthForm() {
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <Mail className="h-4 w-4 text-slate-400" />
             </div>
-            <input name="email" type="email" required value={formData.email} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="you@example.com" />
+            <input name="email" type="email" required value={formData.email} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-slate-900/50 text-slate-900 dark:text-white" placeholder="you@example.com" />
           </div>
         </div>
 
@@ -86,7 +86,7 @@ function AuthForm() {
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <Lock className="h-4 w-4 text-slate-400" />
             </div>
-            <input name="password" type="password" required value={formData.password} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-slate-900/50" placeholder="••••••••" />
+            <input name="password" type="password" required value={formData.password} onChange={handleChange} className="pl-10 block w-full px-3 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-slate-900/50 text-slate-900 dark:text-white" placeholder="••••••••" />
           </div>
         </div>
 

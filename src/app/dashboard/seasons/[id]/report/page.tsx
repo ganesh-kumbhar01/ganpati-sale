@@ -68,7 +68,7 @@ export default async function SeasonReportPage({ params }: { params: { id: strin
       </div>
 
       {/* Report Container */}
-      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden print:shadow-none print:border-none print:bg-white print:text-black">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden print:shadow-none print:border-none print:bg-white print:text-black text-slate-900 dark:text-white">
         
         {/* Header */}
         <div className="bg-indigo-600 px-8 py-10 text-white print:bg-indigo-600 print:text-white" style={{ WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}>
@@ -235,7 +235,7 @@ export default async function SeasonReportPage({ params }: { params: { id: strin
                         <th className="px-6 py-3 text-right text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider print:text-black">Total Expected</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900 print:divide-slate-300 print:bg-white">
+                    <tbody className="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900 print:divide-slate-300 print:bg-white text-slate-900 dark:text-white">
                       {unsoldProducts.map((p) => (
                         <tr key={p.id}>
                           <td className="px-6 py-4">

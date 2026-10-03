@@ -368,7 +368,7 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
                       <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">Booking History ({viewCustomer.bookings.length})</h4>
                       <div className="space-y-3 max-h-64 overflow-y-auto pr-2">
                         {viewCustomer.bookings.map((booking: any) => (
-                          <div key={booking.id} className="p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-900">
+                          <div key={booking.id} className="p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
                             <div className="flex justify-between items-start mb-2">
                               <p className="text-sm font-bold text-slate-900 dark:text-white">{booking.product?.name}</p>
                               <span className="text-xs font-bold text-slate-500">{new Date(booking.createdAt).toLocaleDateString()}</span>
