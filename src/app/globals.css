@@ -3,15 +3,84 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #c9e8ff;
+  --foreground: #0c0c16;
+
+  --color-white: #ffffff;
+  --color-black: #0c0c16; /* Rich black instead of pure black */
+
+  /* Custom Palette mapped to Tailwind */
+  --color-primary: #6666ff;
+  --color-periwinkle: #b8baff;
+  --color-columbia: #c9e8ff;
+  --color-ink: #0c0c16;
+  --color-celadon: #b9f0d7;
+
+  --slate-50: #c9e8ff;  /* Page bg */
+  --slate-100: #b8baff; /* Sidebar/Header bg */
+  --slate-200: #b8baff; /* Borders in light */
+  --slate-300: #a5a7f2;
+  --slate-400: #555570;
+  --slate-500: #555570; /* Muted text */
+  --slate-600: #0c0c16;
+  --slate-700: #0c0c16;
+  --slate-800: #0c0c16;
+  --slate-900: #0c0c16; /* Rich black text */
+  --slate-950: #0c0c16;
+
+  --indigo-50: #eef0ff;
+  --indigo-100: #daddff;
+  --indigo-200: #b8baff;
+  --indigo-300: #9397ff;
+  --indigo-400: #7a7eff;
+  --indigo-500: #6666ff; /* Primary */
+  --indigo-600: #6666ff; /* Primary */
+  --indigo-700: #5252cc;
+  --indigo-800: #3d3d99;
+  --indigo-900: #292966;
+  
+  --emerald-50: #e5fbf0;
+  --emerald-100: #b9f0d7; /* Celadon accent */
+  --emerald-200: #8ae4bd;
+  --emerald-300: #5ed8a3;
+  --emerald-400: #3bca8d;
+  --emerald-500: #b9f0d7; /* Celadon accent */
+  --emerald-600: #16935c;
+  --emerald-700: #0f7045;
+  --emerald-800: #0a4f31;
+  --emerald-900: #05301d;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #262624;
+  --foreground: #c9c8c0;
+
+  --color-white: #f5f4ee; /* So dark:text-white works */
+  --color-black: #1f1f1e;
+
+  /* Soft Charcoal Greys for Dark Mode */
+  --slate-950: #1f1f1e; /* Sidebar bg */
+  --slate-900: #262624; /* Page bg */
+  --slate-800: #30302e; /* Cards bg */
+  --slate-700: #45453f; /* Borders */
+  --slate-600: #45453f; /* Borders */
+  --slate-500: #8f8e86; /* Muted text */
+  --slate-400: #c9c8c0; /* Body text */
+  --slate-300: #c9c8c0; 
+  --slate-200: #f5f4ee; /* Headings */
+  --slate-100: #f5f4ee;
+  --slate-50: #3b3b38;  /* Used for some hovers */
+  
+  --indigo-50: #3b3b38;
+  --indigo-100: #45453f;
+  --indigo-200: #b8baff;
+  --indigo-300: #9397ff;
+  --indigo-400: #7a7eff;
+  --indigo-500: #6666ff;
+  --indigo-600: #6666ff;
+  --indigo-700: #5252cc;
+  --indigo-800: #3d3d99;
+  --indigo-900: #3b3b38; /* Indigo-900/20 backgrounds mapped to charcoal */
 }
 
 body {
@@ -26,31 +95,43 @@ body {
   }
 }
 
-/* Fix Recharts outline issue on mobile */
 .recharts-wrapper,
 .recharts-surface,
 .recharts-responsive-container,
 svg:focus,
-svg:active {
-  outline: none !important;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* Custom Scrollbars for Tables */
-.overflow-x-auto::-webkit-scrollbar { height: 6px; }
-.overflow-x-auto::-webkit-scrollbar-track { background: transparent; }
-.overflow-x-auto::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-.overflow-x-auto::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-.dark .overflow-x-auto::-webkit-scrollbar-thumb { background: #475569; }
-.dark .overflow-x-auto::-webkit-scrollbar-thumb:hover { background: #64748b; }
-
-/* Remove focus outline from all recharts elements */
-.recharts-wrapper,
-.recharts-surface,
-.recharts-responsive-container,
+svg:active,
 .recharts-rectangle,
 .recharts-tooltip-wrapper,
 .recharts-layer,
 [class*="recharts"] {
   outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.overflow-x-auto::-webkit-scrollbar { height: 6px; }
+.overflow-x-auto::-webkit-scrollbar-track { background: transparent; }
+.overflow-x-auto::-webkit-scrollbar-thumb { background: #b8baff; border-radius: 10px; }
+.overflow-x-auto::-webkit-scrollbar-thumb:hover { background: #6666ff; }
+.dark .overflow-x-auto::-webkit-scrollbar-thumb { background: #45453f; }
+.dark .overflow-x-auto::-webkit-scrollbar-thumb:hover { background: #8f8e86; }
+
+
+/* Secondary buttons override */
+button.bg-white.dark\:bg-slate-800 {
+  background-color: var(--slate-100) !important;
+  color: var(--slate-900) !important;
+  border-color: transparent !important;
+}
+.dark button.bg-white.dark\:bg-slate-800 {
+  background-color: transparent !important;
+  border-color: var(--color-primary) !important;
+  color: var(--slate-100) !important;
+}
+
+/* Modal overlay near-black override */
+.bg-slate-900\/75 {
+  background-color: rgba(102, 102, 255, 0.4) !important; /* Primary */
+}
+.dark .bg-slate-900\/75 {
+  background-color: rgba(59, 59, 56, 0.75) !important; /* #3b3b38 */
 }

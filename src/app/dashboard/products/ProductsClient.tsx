@@ -269,7 +269,7 @@ export default function ProductsClient({ initialProducts, seasons }: { initialPr
       {/* Modal */}
       {isModalOpen && (
         <div className="relative z-50" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-          <div className="fixed inset-0 bg-slate-900/75 backdrop-blur-sm transition-opacity" onClick={() => setIsModalOpen(false)}></div>
+          <div className="fixed inset-0 bg-indigo-500/40 dark:bg-slate-900/75 backdrop-blur-sm transition-opacity" onClick={() => setIsModalOpen(false)}></div>
           <div className="fixed inset-0 z-10 overflow-y-auto">
             <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
               <div className="relative transform overflow-hidden rounded-2xl bg-white dark:bg-slate-800 text-left shadow-xl transition-all w-full max-w-full sm:my-8 sm:w-full sm:max-w-xl border border-slate-200 dark:border-slate-700 max-h-[85vh] overflow-y-auto">

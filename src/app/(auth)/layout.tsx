@@ -9,7 +9,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       
       <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10 text-center">
         <div className="inline-flex items-center justify-center w-28 h-28 mb-4 overflow-hidden">
-          <img src="/sanchit-logo-transparent.png" alt="Sanchit Logo" className="w-full h-full object-contain" />
+          <div className="w-full h-full bg-primary" style={{ WebkitMaskImage: 'url(/sanchit-logo-transparent.png)', WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center', maskImage: 'url(/sanchit-logo-transparent.png)', maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center' }} aria-label="Sanchit Logo" role="img" />
         </div>
         <h2 className="text-3xl font-extrabold text-[#555aa8] tracking-tight">
           Sanchit
