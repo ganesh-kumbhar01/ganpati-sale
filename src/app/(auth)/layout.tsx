@@ -11,7 +11,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         <div className="inline-flex items-center justify-center w-28 h-28 mb-4 overflow-hidden">
           <img src="/sanchit-logo-new.png" alt="Sanchit Logo" className="w-full h-full object-contain drop-shadow-sm" />
         </div>
-        <h2 className="text-3xl font-extrabold text-[#2f88ff] tracking-tight">
+        <h2 className="text-3xl font-extrabold text-[#5340FF] tracking-tight">
           Sanchit
         </h2>
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 font-medium">
