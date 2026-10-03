@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Users, Phone, Calendar, ImageIcon } from 'lucide-react';
-import { format } from 'date-fns';
 
 export default function WaitlistClient({ demands }: { demands: any[] }) {
   // Group demands by product
@@ -104,7 +103,7 @@ export default function WaitlistClient({ demands }: { demands: any[] }) {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="inline-flex items-center gap-1.5 text-sm text-slate-500 dark:text-slate-400">
                             <Calendar className="w-3.5 h-3.5" />
-                            {format(new Date(waiter.createdAt), 'dd MMM yyyy')}
+                            {new Date(waiter.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}
                           </div>
                         </td>
                       </tr>
