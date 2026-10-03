@@ -34,7 +34,7 @@ export default async function SeasonReportPage({ params }: { params: { id: strin
 
   // 2. Costs & Expenses
   const totalInventoryCost = season.products.reduce((sum, p) => sum + (p.purchasePrice * p.qtyPurchased), 0);
-  const totalExpenses = season.expenses.reduce((sum, exp) => sum + exp.amount, 0);
+  const totalExpenses = season.expenses.reduce((sum, exp) => exp.category === 'Ganpati Purchase' ? sum : sum + exp.amount, 0);
 
   // 3. Profit
   const netProfit = totalRevenue - totalInventoryCost - totalExpenses;
