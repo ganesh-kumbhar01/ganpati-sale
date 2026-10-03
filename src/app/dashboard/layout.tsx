@@ -33,7 +33,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="flex-shrink-0 w-10 h-10 overflow-hidden flex items-center justify-center">
             <img src="/sanchit-logo-new.png" alt="Sanchit Logo" className="w-full h-full object-contain drop-shadow-sm" />
           </div>
-          <span className="text-2xl font-extrabold text-[#b8baff] tracking-tight">Sanchit</span>
+          <span className="text-2xl font-extrabold text-[#2f88ff] tracking-tight">Sanchit</span>
         </div>
         <div className="flex flex-1 flex-col overflow-y-auto">
           <nav className="flex-1 space-y-1 px-4 py-4">
@@ -71,7 +71,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <div className="flex-shrink-0 w-8 h-8 overflow-hidden flex items-center justify-center">
               <img src="/sanchit-logo-new.png" alt="Sanchit Logo" className="w-full h-full object-contain drop-shadow-sm" />
             </div>
-            <div className="text-lg font-extrabold text-[#b8baff] tracking-tight hidden sm:block">Sanchit</div>
+            <div className="text-lg font-extrabold text-[#2f88ff] tracking-tight hidden sm:block">Sanchit</div>
           </div>
           
           <div className="flex flex-1 items-center justify-end md:justify-between w-full">
