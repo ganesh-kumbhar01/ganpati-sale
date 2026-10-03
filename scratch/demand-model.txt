@@ -1,0 +1,13 @@
+
+model Demand {
+  id            String    @id @default(cuid())
+  seasonId      String
+  productId     String
+  customerName  String?
+  customerPhone String?
+  notes         String?
+  createdAt     DateTime  @default(now())
+
+  season        Season    @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+  product       Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
