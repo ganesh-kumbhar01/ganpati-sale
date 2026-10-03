@@ -1,16 +1,21 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/db';
-import { getCurrentSeason } from '@/lib/auth';
+import { getSession } from '@/lib/auth';
 
 export async function POST(request: Request) {
   try {
-    const seasonId = await getCurrentSeason();
-    if (!seasonId) return NextResponse.json({ error: 'No active season' }, { status: 400 });
+    const session = await getSession();
+    if (!session?.userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const data = await request.json();
+    
+    // Get seasonId from the product
+    const product = await prisma.product.findUnique({ where: { id: data.productId } });
+    if (!product) return NextResponse.json({ error: 'Product not found' }, { status: 404 });
+
     const demand = await prisma.demand.create({
       data: {
-        seasonId,
+        seasonId: product.seasonId,
         productId: data.productId,
         customerName: data.customerName || null,
         customerPhone: data.customerPhone || null,

@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, Package, Users, Calendar, Settings, LogOut, IndianRupee, FileText, CheckSquare, Truck, Receipt , Flame} from 'lucide-react';
+import { LayoutDashboard, Package, Users, Calendar, Settings, LogOut, IndianRupee, FileText, CheckSquare, Truck, Receipt , Flame, ClipboardList} from 'lucide-react';
 import toast from 'react-hot-toast';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { GlobalSearch } from '@/components/GlobalSearch';
@@ -17,6 +17,7 @@ const navigation = [
   { name: 'Expenses', href: '/dashboard/expenses', icon: Receipt },
   { name: 'Products', href: '/dashboard/products', icon: Package },
   { name: 'Clearance', href: '/dashboard/clearance', icon: Flame },
+  { name: 'Waitlist', href: '/dashboard/waitlist', icon: ClipboardList },
   { name: 'Payments', href: '/dashboard/payments', icon: IndianRupee },
   { name: 'Seasons', href: '/dashboard/seasons', icon: Calendar },
   { name: 'Settings', href: '/dashboard/settings', icon: Settings },
