@@ -592,7 +592,7 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                   <div className="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-4 mb-4">
                     <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Customer</h4>
                     <p className="text-base font-medium text-slate-900 dark:text-white">{viewBooking.customer?.name}</p>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">ðŸ“ž {viewBooking.customer?.mobile}</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">{viewBooking.customer?.mobile}</p>
                   </div>
 
                   <div className="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-4 mb-4">

@@ -302,7 +302,7 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
                           </button>
                         </h3>
                         <p className="text-slate-500 text-sm mt-1 flex items-center flex-wrap gap-2">
-                          <span>ðŸ“ž {viewCustomer.mobile}</span>
+                          <span>{viewCustomer.mobile}</span>
                           <span className="hidden sm:inline">&bull;</span>
                           <span>{viewCustomer.customerType}</span>
                           <span className="hidden sm:inline">&bull;</span>

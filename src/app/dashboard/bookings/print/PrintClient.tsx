@@ -40,7 +40,7 @@ export default function PrintClient({ bookings }: { bookings: any[] }) {
             <div>
               <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Customer Details</h4>
               <p className="font-bold text-slate-900 text-lg">{booking.customer.name}</p>
-              <p className="text-slate-600">ðŸ“ž {booking.customer.mobile}</p>
+              <p className="text-slate-600">{booking.customer.mobile}</p>
             </div>
             <div>
               <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Pickup Details</h4>
