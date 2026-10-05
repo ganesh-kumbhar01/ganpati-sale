@@ -131,7 +131,7 @@ export default function BroadcastClient({ customers }: { customers: any[] }) {
                 <span className="text-sm font-medium text-indigo-600 dark:text-indigo-400">{sentCount} / {totalCount} Sent</span>
               </div>
               <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
-                <div className="bg-indigo-600 h-2 rounded-full transition-all duration-500" style={{ width: \`\${progressPercent}%\` }}></div>
+                <div className="bg-indigo-600 h-2 rounded-full transition-all duration-500" style={{ width: `${progressPercent}%` }}></div>
               </div>
             </div>
 
@@ -149,7 +149,7 @@ export default function BroadcastClient({ customers }: { customers: any[] }) {
                   {customers.map((customer) => {
                     const isSent = sentStatus[customer.id];
                     return (
-                      <tr key={customer.id} className={\`hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors \${isSent ? 'bg-emerald-50/50 dark:bg-emerald-900/10' : ''}\`}>
+                      <tr key={customer.id} className={`hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors ${isSent ? 'bg-emerald-50/50 dark:bg-emerald-900/10' : ''}`}>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="font-semibold text-slate-900 dark:text-white">{customer.name}</div>
                           <div className="text-xs text-slate-500 dark:text-slate-400">{customer.mobile}</div>
@@ -168,11 +168,11 @@ export default function BroadcastClient({ customers }: { customers: any[] }) {
                         <td className="px-6 py-4 whitespace-nowrap text-right">
                           <button
                             onClick={() => handleSend(customer)}
-                            className={\`inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium transition-colors \${
+                            className={`inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                               isSent 
                                 ? 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700' 
                                 : 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm'
-                            }\`}
+                            }`}
                           >
                             <Send className="w-4 h-4 mr-1.5" />
                             {isSent ? 'Send Again' : 'Send'}
