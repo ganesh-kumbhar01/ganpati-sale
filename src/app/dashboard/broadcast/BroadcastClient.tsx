@@ -34,8 +34,8 @@ export default function BroadcastClient({ customers }: { customers: any[] }) {
       fullMessage += `\n\nलिंक: ${linkUrl}`;
     }
 
-    const mobile = customer.mobile.replace(/\\D/g, '');
-    const url = \`https://wa.me/91\${mobile}?text=\${encodeURIComponent(fullMessage)}\`;
+    const mobile = customer.mobile.replace(/\D/g, '');
+    const url = `https://wa.me/91${mobile}?text=${encodeURIComponent(fullMessage)}`;
     window.open(url, '_blank');
 
     // Mark as sent
