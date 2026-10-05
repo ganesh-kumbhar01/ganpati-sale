@@ -178,8 +178,8 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
 
         // Automatically open WhatsApp with confirmed booking message
         const selectedProd = products.find(p => p.id === formData.productId);
-        const text = `à¤¨à¤®à¤¸à¥à¤•à¤¾à¤° ${formData.customerName} à¤œà¥€!\n\nà¤—à¤£à¤ªà¤¤à¤¿ à¤¬à¤¾à¤ªà¥à¤ªà¤¾ à¤®à¥‹à¤°à¤¯à¤¾! ðŸ™\nà¤†à¤ªà¤•à¥€ à¤¬à¥à¤•à¤¿à¤‚à¤— à¤•à¤¨à¥à¤«à¤°à¥à¤® à¤¹à¥‹ à¤—à¤ˆ à¤¹à¥ˆà¥¤\n\nðŸ“Œ à¤®à¥‚à¤°à¥à¤¤à¤¿: ${selectedProd?.name || ''} (Qty: ${payload.quantity})\nðŸ’° à¤•à¥à¤² à¤•à¥€à¤®à¤¤: ₹${payload.totalPrice}\nâœ… à¤œà¤®à¤¾ (Advance): ₹${payload.advanceAmount}\nâ— à¤¬à¤¾à¤•à¥€ (Balance): ₹${payload.totalPrice - payload.advanceAmount}\n\nà¤§à¤¨à¥à¤¯à¤µà¤¾à¤¦!`;
-        const mobile = formData.customerMobile.replace(/\D/g,'');
+        const text = `नमस्कार ${formData.customerName} जी! 🙏\n\nआपकी गणेश मूर्ति की बुकिंग सफलतापूर्वक कन्फर्म हो गई है! 🎉\nयह रहा आपकी बुकिंग का विवरण:\n\nमूर्ती का नाम: ${selectedProd?.name || ''} (Qty: ${payload.quantity})\nकुल राशि: ₹${payload.totalPrice}\nजमा राशि (Advance): ₹${payload.advanceAmount}\nबाकी राशि (Balance): ₹${payload.totalPrice - payload.advanceAmount}\n\nधन्यवाद!`;
+          const mobile = formData.customerMobile.replace(/\D/g,'');
         const url = `https://wa.me/91${mobile}?text=${encodeURIComponent(text)}`;
         
         // Open WhatsApp in a new tab
@@ -240,8 +240,8 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
   };
 
   const handleSendWhatsApp = (booking: any) => {
-    const text = `à¤¨à¤®à¤¸à¥à¤•à¤¾à¤° ${booking.customer?.name} à¤œà¥€!\n\nà¤—à¤£à¤ªà¤¤à¤¿ à¤¬à¤¾à¤ªà¥à¤ªà¤¾ à¤®à¥‹à¤°à¤¯à¤¾! ðŸ™\nà¤†à¤ªà¤•à¥€ à¤¬à¥à¤•à¤¿à¤‚à¤— à¤•à¤¨à¥à¤«à¤°à¥à¤® à¤¹à¥‹ à¤—à¤ˆ à¤¹à¥ˆà¥¤\n\nðŸ“Œ à¤®à¥‚à¤°à¥à¤¤à¤¿: ${booking.product?.name} (Qty: ${booking.quantity})\nðŸ’° à¤•à¥à¤² à¤•à¥€à¤®à¤¤: ₹${booking.totalPrice}\nâœ… à¤œà¤®à¤¾ (Advance): ₹${booking.advanceAmount}\nâ— à¤¬à¤¾à¤•à¥€ (Balance): ₹${booking.balanceAmount}\n\nà¤§à¤¨à¥à¤¯à¤µà¤¾à¤¦!`;
-    const mobile = booking.customer?.mobile.replace(/\D/g,'');
+    const text = `नमस्कार ${booking.customer?.name} जी! 🙏\n\nआपकी गणेश मूर्ति की बुकिंग सफलतापूर्वक कन्फर्म हो गई है! 🎉\nयह रहा आपकी बुकिंग का विवरण:\n\nमूर्ती का नाम: ${booking.product?.name} (Qty: ${booking.quantity})\nकुल राशि: ₹${booking.totalPrice}\nजमा राशि (Advance): ₹${booking.advanceAmount}\nबाकी राशि (Balance): ₹${booking.balanceAmount}\n\nधन्यवाद!`;
+      const mobile = booking.customer?.mobile.replace(/\D/g,'');
     const url = `https://wa.me/91${mobile}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
   };

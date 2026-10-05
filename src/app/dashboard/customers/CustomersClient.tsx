@@ -122,7 +122,7 @@ export default function CustomersClient({ initialCustomers }: { initialCustomers
   };
 
   const handleSendWhatsApp = (customer: any) => {
-    const text = `à¤¨à¤®à¤¸à¥à¤•à¤¾à¤° ${customer.name} à¤œà¥€!\nà¤—à¤£à¤ªà¤¤à¤¿ à¤¬à¤¾à¤ªà¥à¤ªà¤¾ à¤®à¥‹à¤°à¤¯à¤¾! ðŸ™`;
+      const text = `नमस्कार ${customer.name} जी! 🙏`;
     const mobile = customer.mobile.replace(/\D/g,'');
     const url = `https://wa.me/91${mobile}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
