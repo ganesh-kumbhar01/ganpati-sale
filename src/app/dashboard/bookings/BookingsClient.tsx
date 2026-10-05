@@ -493,7 +493,7 @@ export default function BookingsClient({ initialBookings, seasons, products }: {
                                   <div className="p-2 flex-1 flex flex-col justify-between">
                                     <div>
                                       <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{p.name}</p>
-                                      <p className="text-[10px] text-slate-500">{p.size || '-'} â€¢ {p.material}</p>
+                                      <p className="text-[10px] text-slate-500">{p.size || '-'} &bull; {p.material}</p>
                                     </div>
                                     <div className="mt-2 flex justify-between items-end">
                                       <span className="text-xs font-bold text-emerald-600">₹{p.sellingPrice}</span>
