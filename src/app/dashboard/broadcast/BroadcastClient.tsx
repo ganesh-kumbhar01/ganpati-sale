@@ -29,9 +29,9 @@ export default function BroadcastClient({ customers }: { customers: any[] }) {
       return;
     }
 
-    let fullMessage = \`नमस्कार \${customer.name} जी! 🙏\\n\\n\${message}\`;
+    let fullMessage = `नमस्कार ${customer.name} जी! 🙏\n\n${message}`;
     if (linkUrl) {
-      fullMessage += \`\\n\\nलिंक: \${linkUrl}\`;
+      fullMessage += `\n\nलिंक: ${linkUrl}`;
     }
 
     const mobile = customer.mobile.replace(/\\D/g, '');
